@@ -4,21 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ECDAT — Enterprise Cryptographic Discovery & Analysis Tool</title>
-  <meta name="description" content="ECDAT discovers, analyzes, and helps migrate enterprise cryptography to post-quantum standards. Experience the guided demo.">
-  <link rel="stylesheet" href="style.css?v=5">
+  <meta name="description" content="ECDAT discovers, analyzes, and helps migrate enterprise cryptography to post-quantum standards. Evidence-backed cryptographic intelligence for discovery, risk, and migration planning.">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Technical Background SVG -->
+  <div class="tech-bg" aria-hidden="true">
+    <svg class="tech-bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#dff56b" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#dff56b" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Faint grid lines -->
+      <line x1="200" y1="0" x2="200" y2="900" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="400" y2="900" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
+      <line x1="720" y1="0" x2="720" y2="900" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+      <line x1="1040" y1="0" x2="1040" y2="900" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
+      <line x1="1240" y1="0" x2="1240" y2="900" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
+      <!-- Horizontal lines -->
+      <line x1="0" y1="180" x2="1440" y2="180" stroke="rgba(255,255,255,0.012)" stroke-width="1"/>
+      <line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+      <line x1="0" y1="720" x2="1440" y2="720" stroke="rgba(255,255,255,0.012)" stroke-width="1"/>
+      <!-- Topology connections -->
+      <line x1="200" y1="180" x2="400" y2="450" stroke="rgba(223,245,107,0.04)" stroke-width="0.5"/>
+      <line x1="400" y1="450" x2="720" y2="180" stroke="rgba(223,245,107,0.03)" stroke-width="0.5"/>
+      <line x1="720" y1="180" x2="1040" y2="450" stroke="rgba(223,245,107,0.04)" stroke-width="0.5"/>
+      <line x1="1040" y1="450" x2="1240" y2="720" stroke="rgba(223,245,107,0.03)" stroke-width="0.5"/>
+      <line x1="720" y1="450" x2="400" y2="720" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+      <line x1="720" y1="450" x2="1040" y2="720" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+      <!-- Nodes -->
+      <circle cx="200" cy="180" r="2" fill="rgba(223,245,107,0.15)"/>
+      <circle cx="400" cy="450" r="3" fill="rgba(223,245,107,0.2)"/>
+      <circle cx="720" cy="180" r="2.5" fill="rgba(223,245,107,0.12)"/>
+      <circle cx="1040" cy="450" r="3" fill="rgba(223,245,107,0.18)"/>
+      <circle cx="1240" cy="720" r="2" fill="rgba(223,245,107,0.1)"/>
+      <circle cx="400" cy="720" r="2" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="1040" cy="720" r="2" fill="rgba(255,255,255,0.06)"/>
+      <circle cx="720" cy="450" r="4" fill="url(#nodeGlow)"/>
+      <!-- Animated pulse on center node -->
+      <circle cx="720" cy="450" r="4" fill="none" stroke="rgba(223,245,107,0.08)" stroke-width="1">
+        <animate attributeName="r" values="4;20;4" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-opacity" values="0.08;0;0.08" dur="6s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
   <div class="app-shell" id="top">
     <!-- ================================================================= -->
-    <!-- TOP NAVBAR (Orbit Floating Capsule Navigation)                   -->
+    <!-- FLOATING CAPSULE NAVIGATION                                       -->
     <!-- ================================================================= -->
     <header class="top-bar">
       <div class="top-bar-left">
         <a href="#top" class="logo-link" aria-label="ECDAT Home">
-          <img src="assets/logo.png" alt="ECDAT — Enterprise Cryptographic Discovery & Analysis" class="navbar-logo-img">
+          <img src="assets/logo.png" alt="ECDAT" class="navbar-logo-img">
         </a>
       </div>
       <nav class="top-nav-tabs">
@@ -35,163 +78,211 @@
     </header>
 
     <!-- ================================================================= -->
-    <!-- SECTION 1: OVERVIEW (Exact Orbit Editorial Architecture)           -->
+    <!-- SECTION 1: OVERVIEW — Orbit Editorial Scroll Storytelling          -->
     <!-- ================================================================= -->
     <section id="section-overview" class="page-section active">
-      <!-- 1. Hero Block (Orbit Hero Composition) -->
+
+      <!-- HERO -->
       <div class="hero-block">
         <div class="hero-inner">
-          <div class="hero-eyebrow">
+          <div class="hero-eyebrow reveal-up">
             <span class="pulse-dot"></span>
-            <span>Ecosystem Active · Post-Quantum Cryptographic Intelligence</span>
+            <span>Post-Quantum Cryptographic Intelligence</span>
           </div>
-          <h1 class="hero-headline">
-            Understand your cryptography<br>before you migrate it.
+          <h1 class="hero-headline reveal-up delay-1">
+            <span class="hero-line">Understand your</span>
+            <span class="hero-line">cryptography before</span>
+            <span class="hero-line accent-line">you migrate it.</span>
           </h1>
-          <p class="hero-sub">
-            ECDAT brings cryptographic evidence from across your organization into one traceable view.
-            It shows what's being used, what's at risk, what's unknown, and how migration can be planned — 
-            all with auditable reasoning, not opaque scores.
+          <p class="hero-sub reveal-up delay-2">
+            Evidence-backed cryptographic intelligence for discovery, risk assessment, and migration planning. No opaque scores. No synthetic verdicts. Every conclusion traceable.
           </p>
-          <div class="hero-cta-row">
+          <div class="hero-cta-row reveal-up delay-3">
             <button class="btn-primary-hero" id="btn-hero-try">
-              <span>Start Analysis</span>
-              <span class="btn-arrow">↗</span>
+              <span>Try ECDAT</span>
+              <span class="btn-arrow">→</span>
             </button>
             <button class="btn-secondary-hero" id="btn-hero-how">
               <span>Explore Architecture</span>
             </button>
           </div>
-        </div>
-      </div>
-
-      <!-- 2. The Challenge (Orbit BusinessComplexity Composition) -->
-      <div class="orbit-editorial-section complexity-section">
-        <span class="section-kicker">The Challenge</span>
-        <h2 class="editorial-headline">
-          Complexity Slows Migration
-        </h2>
-        <p class="editorial-sub">
-          When cryptography is hidden, progress stops. Fragmentation across repositories, dependencies, CI/CD pipelines, containers, and network endpoints creates blind spots, unevidenced assumptions, and unquantified quantum risk.
-        </p>
-        <div class="complexity-grid">
-          <div class="complexity-card">
-            <span class="comp-num">01</span>
-            <h3 class="comp-title">Discovery Fragmentation</h3>
-            <p class="comp-desc">Heterogeneous security tools generate isolated, incompatible alert formats without a canonical cryptographic asset identity.</p>
-          </div>
-          <div class="complexity-card">
-            <span class="comp-num">02</span>
-            <h3 class="comp-title">Context Silos</h3>
-            <p class="comp-desc">Scanner hits lack operational context: key lifecycle roles, data sensitivity, and network exposure remain unlinked from the code finding.</p>
-          </div>
-          <div class="complexity-card">
-            <span class="comp-num">03</span>
-            <h3 class="comp-title">Governance Disconnect</h3>
-            <p class="comp-desc">Automated tools hallucinate or assume missing parameters, risking premature migration before formal human verification.</p>
+          <div class="hero-meta reveal-up delay-4">
+            <span class="hero-meta-item">Evidence</span>
+            <span class="hero-meta-sep">·</span>
+            <span class="hero-meta-item">Risk</span>
+            <span class="hero-meta-sep">·</span>
+            <span class="hero-meta-item">Migration</span>
+            <span class="hero-meta-sep">·</span>
+            <span class="hero-meta-item">Review</span>
           </div>
         </div>
       </div>
 
-      <!-- 3. The Imperative (Orbit TransformationNeed Composition) -->
-      <div class="orbit-editorial-section imperative-section">
-        <span class="section-kicker">The Imperative</span>
-        <h2 class="editorial-headline-centered">The Quantum Divide</h2>
-        <div class="expanding-divider"></div>
-        <p class="editorial-thesis">
-          The enterprises that thrive are those that transform cryptographic discovery into verified evidence. Raw scanner hits become normalized assets. Missing parameters become explicit uncertainty. Ad-hoc replacements become NIST FIPS-approved PQC candidates.
-        </p>
-        <p class="editorial-bridge">
-          The question isn't whether post-quantum cryptography is coming — it's whether your decision trail can withstand mathematical scrutiny.
-        </p>
-      </div>
-
-      <!-- 4. Proven Authority Metrics (Orbit TrustBar Composition) -->
-      <div class="orbit-editorial-section trust-section">
-        <span class="section-kicker">Proven Foundation</span>
-        <div class="trust-metrics-grid">
-          <div class="trust-metric-col">
-            <div class="trust-val">100%</div>
-            <div class="trust-lbl">Deterministic Reasoning</div>
+      <!-- SCROLL STORY: DISCOVER -->
+      <div class="story-section reveal-section" id="story-discover">
+        <div class="story-layout story-layout--left">
+          <div class="story-content">
+            <span class="story-num">01</span>
+            <h2 class="story-headline">Where does<br>cryptography live?</h2>
+            <div class="story-tags">
+              <span class="story-tag">Repositories</span>
+              <span class="story-tag">Dependencies</span>
+              <span class="story-tag">CI/CD</span>
+              <span class="story-tag">Containers</span>
+              <span class="story-tag">Certificates</span>
+              <span class="story-tag">Network / TLS</span>
+              <span class="story-tag">Security Tools</span>
+            </div>
           </div>
-          <div class="trust-metric-col">
-            <div class="trust-val highlight">0</div>
-            <div class="trust-lbl">Synthetic Verdicts</div>
-          </div>
-          <div class="trust-metric-col">
-            <div class="trust-val">FIPS</div>
-            <div class="trust-lbl">203 / 204 / 205 Targets</div>
-          </div>
-          <div class="trust-metric-col">
-            <div class="trust-val">PQC</div>
-            <div class="trust-lbl">Role-Aware Mapping</div>
+          <div class="story-aside">
+            <span class="story-kicker">Discovery</span>
+            <p class="story-aside-text">Scanner-agnostic ingestion normalizes heterogeneous outputs without vendor lock-in. Adapters translate findings into a canonical cryptographic identity.</p>
           </div>
         </div>
       </div>
 
-      <!-- 5. Scope & Foundation Cards -->
-      <div class="today-future-section">
-        <div class="today-card">
-          <span class="tf-badge tf-today">Today: Verified Foundation (Phases 0–4)</span>
-          <p>Multi-tool discovery ingestion, evidence normalization, canonical inventory synthesis, 
-          deterministic risk reasoning, role-aware PQC mapping, dependency scheduling, and blocking 
-          human review gates — all running in this prototype.</p>
-        </div>
-        <div class="future-card">
-          <span class="tf-badge tf-future">Roadmap: Planned Capabilities (Phases 5–12)</span>
-          <p>Automated provider refactoring, enterprise CI/CD gatekeeping, continuous posture 
-          monitoring, and post-migration CBOM rescan verification.</p>
+      <!-- SCROLL STORY: EVIDENCE -->
+      <div class="story-section reveal-section" id="story-evidence">
+        <div class="story-layout story-layout--right">
+          <div class="story-aside">
+            <span class="story-kicker">Provenance</span>
+            <p class="story-aside-text">Every conclusion carries a traceable chain from raw scanner observation through normalization, risk assessment, and migration recommendation.</p>
+          </div>
+          <div class="story-content">
+            <span class="story-num">02</span>
+            <h2 class="story-headline">Every finding<br>needs evidence.</h2>
+            <div class="story-evidence-chain">
+              <span class="chain-node">Source</span>
+              <span class="chain-arrow">→</span>
+              <span class="chain-node">Location</span>
+              <span class="chain-arrow">→</span>
+              <span class="chain-node">Observation</span>
+              <span class="chain-arrow">→</span>
+              <span class="chain-node">Adapter</span>
+              <span class="chain-arrow">→</span>
+              <span class="chain-node accent-node">Provenance</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 6. Architectural Scope Comparison Table -->
-      <div class="arch-progression-box" style="margin-top: 32px;">
-        <h3 class="subsection-title">About this Prototype</h3>
-        <p class="subsection-desc">
-          This demonstration represents the broader ECDAT product architecture. 
-          The current prototype uses a verified Phase 0–4 foundation and controlled demonstration inputs. 
-          The full product is designed to integrate with organizational discovery sources through adapters and extend across the complete ECDAT lifecycle.
-        </p>
-        <div class="comparison-table-box">
-          <div class="ct-col">
-            <h4>Current Prototype</h4>
-            <ul class="ct-list">
-              <li>Engineered Phase 0–4 analytical core in <code>product/core/</code></li>
-              <li>Deterministic risk reasoning & NIST PQC mapping</li>
-              <li>Controlled guided scenarios (TC01 RSA, TC02 AES, TC06 Ed25519)</li>
-              <li>Real bounded source-discovery adapter for demonstration projects</li>
-              <li>Preserves empirical uncertainty without synthetic guessing</li>
-            </ul>
+      <!-- SCROLL STORY: UNDERSTAND -->
+      <div class="story-section reveal-section" id="story-understand">
+        <div class="story-layout story-layout--center">
+          <span class="story-num">03</span>
+          <h2 class="story-headline story-headline--center">Turn observations into<br>cryptographic assets.</h2>
+          <p class="story-center-sub">Normalize raw findings into canonical identities with role, family, primitive, and confidence classification.</p>
+        </div>
+      </div>
+
+      <!-- SCROLL STORY: RISK -->
+      <div class="story-section reveal-section" id="story-risk">
+        <div class="story-layout story-layout--left">
+          <div class="story-content">
+            <span class="story-num">04</span>
+            <h2 class="story-headline">Not every unknown<br>is a vulnerability.</h2>
+            <p class="story-body">ECDAT distinguishes between empirically known properties and genuinely missing evidence. Missing parameters route to explicit uncertainty — never synthetic guesses.</p>
           </div>
-          <div class="ct-col contrast">
-            <h4>Broader Product Vision</h4>
-            <ul class="ct-list">
-              <li>Organization-wide discovery across repositories, CI/CD, and containers</li>
-              <li>Heterogeneous adapter ecosystem (Sonar, CodeQL, sslscan2, Syft)</li>
-              <li>Automated cryptographic provider refactoring (Phase 5–6)</li>
-              <li>Continuous enterprise posture monitoring (Phase 7–8)</li>
-              <li>Automated post-migration CBOM diff verification (Phase 9–12)</li>
-            </ul>
+          <div class="story-aside">
+            <span class="story-kicker">Risk Model</span>
+            <div class="story-metric-pair">
+              <div class="story-metric">
+                <span class="sm-val">100%</span>
+                <span class="sm-label">Deterministic Reasoning</span>
+              </div>
+              <div class="story-metric">
+                <span class="sm-val accent-val">0</span>
+                <span class="sm-label">Synthetic Verdicts</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- SCROLL STORY: MIGRATION -->
+      <div class="story-section reveal-section" id="story-migration">
+        <div class="story-layout story-layout--right">
+          <div class="story-aside">
+            <span class="story-kicker">Standards</span>
+            <div class="story-standards">
+              <span class="std-item">FIPS 203 · ML-KEM</span>
+              <span class="std-item">FIPS 204 · ML-DSA</span>
+              <span class="std-item">FIPS 205 · SLH-DSA</span>
+              <span class="std-item">SP 800-227 · Hybrid</span>
+            </div>
+          </div>
+          <div class="story-content">
+            <span class="story-num">05</span>
+            <h2 class="story-headline">Map what<br>needs to change.</h2>
+            <p class="story-body">Role-aware PQC target mapping ensures key generation maps to ML-KEM, digital signatures to ML-DSA, and symmetric ciphers are correctly classified as out-of-scope.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCROLL STORY: PLAN -->
+      <div class="story-section reveal-section" id="story-plan">
+        <div class="story-layout story-layout--center">
+          <span class="story-num">06</span>
+          <h2 class="story-headline story-headline--center">Sequence the work.</h2>
+          <p class="story-center-sub">Dependency-ordered milestones with explicit prerequisites, agility blockers, and actionable priority tiers.</p>
+        </div>
+      </div>
+
+      <!-- SCROLL STORY: REVIEW -->
+      <div class="story-section reveal-section" id="story-review">
+        <div class="story-layout story-layout--left">
+          <div class="story-content">
+            <span class="story-num">07</span>
+            <h2 class="story-headline">Keep humans in<br>the decision loop.</h2>
+            <p class="story-body">Formal review gates block engineering release when evidence is incomplete. ECDAT assists decisions — it doesn't fabricate missing facts.</p>
+          </div>
+          <div class="story-aside">
+            <span class="story-kicker">Governance</span>
+            <p class="story-aside-text">Mandatory human review gates before migration approval. Zero automated sign-offs without verified parameters.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCROLL STORY: VERIFY -->
+      <div class="story-section reveal-section" id="story-verify">
+        <div class="story-layout story-layout--center">
+          <span class="story-num">08</span>
+          <h2 class="story-headline story-headline--center">Verify the change<br>actually worked.</h2>
+          <p class="story-center-sub">Post-migration CBOM diff verification. Planned capability — Phase 9 roadmap.</p>
+          <span class="story-future-badge">Future Capability</span>
+        </div>
+      </div>
+
+      <!-- SCOPE SECTION -->
+      <div class="scope-section reveal-section">
+        <div class="scope-grid">
+          <div class="scope-card">
+            <span class="scope-badge scope-today">Today: Verified Foundation</span>
+            <p>Multi-tool discovery ingestion, evidence normalization, canonical inventory synthesis, deterministic risk reasoning, role-aware PQC mapping, dependency scheduling, and blocking human review gates.</p>
+          </div>
+          <div class="scope-card">
+            <span class="scope-badge scope-future">Roadmap: Planned</span>
+            <p>Automated provider refactoring, enterprise CI/CD gatekeeping, continuous posture monitoring, and post-migration CBOM rescan verification.</p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ================================================================= -->
     <!-- SECTION 2: HOW IT WORKS                                           -->
     <!-- ================================================================= -->
     <section id="section-how" class="page-section">
-      <div class="how-header">
+      <div class="how-header reveal-up">
         <span class="section-kicker">Architecture</span>
         <h2 class="section-title">How ECDAT works</h2>
         <p class="section-lead">
-          ECDAT is a scanner-agnostic intelligence platform. It doesn't replace your existing discovery tools —
-          it normalizes their output and applies deterministic reasoning to produce actionable migration intelligence.
+          ECDAT is a scanner-agnostic intelligence platform. It normalizes discovery outputs and applies deterministic reasoning to produce actionable migration intelligence.
         </p>
       </div>
 
       <!-- Pipeline Flow -->
-      <div class="pipeline-visual">
+      <div class="pipeline-visual reveal-up delay-1">
         <div class="pipeline-stage">
           <span class="ps-num">01</span>
           <span class="ps-name">Ingest</span>
@@ -223,10 +314,10 @@
         </div>
       </div>
 
-      <!-- Enterprise Sources -->
-      <div class="sources-section">
+      <!-- Adapters -->
+      <div class="sources-section reveal-up delay-2">
         <h3 class="subsection-title">Scanner-Agnostic Ingestion</h3>
-        <p class="subsection-desc">ECDAT works with your organization's existing tools. Adapters normalize heterogeneous scanner outputs without vendor lock-in.</p>
+        <p class="subsection-desc">Adapters normalize heterogeneous scanner outputs without vendor lock-in.</p>
         <div class="adapters-grid">
           <div class="adapter-card live-adapter">
             <span class="adapter-status">Demonstrated</span>
@@ -256,10 +347,10 @@
         </div>
       </div>
 
-      <!-- Provenance Trace -->
-      <div class="trace-section">
+      <!-- Provenance -->
+      <div class="trace-section reveal-up">
         <h3 class="subsection-title">Every conclusion is traceable</h3>
-        <p class="subsection-desc">ECDAT preserves a full provenance chain from raw scanner observation to migration recommendation.</p>
+        <p class="subsection-desc">Full provenance chain from raw scanner observation to migration recommendation.</p>
         <div class="trace-flow">
           <span class="trace-node">Scanner</span>
           <span class="trace-connector">→</span>
@@ -277,112 +368,35 @@
         </div>
       </div>
 
-      <!-- Why ECDAT: Complete Architectural Progression -->
-      <div class="sources-section" style="padding-top: 0;">
-        <h3 class="subsection-title">Why ECDAT? The Architectural Progression</h3>
-        <p class="subsection-desc">
-          ECDAT is designed to turn raw cryptographic discovery observations into evidence-backed decision support for enterprise migration planning.
-        </p>
-
-        <div class="arch-flow-diagram">
-          <div class="afd-row">
-            <span class="afd-label">1. Sources</span>
-            <div class="afd-items">
-              <span class="afd-chip">Repositories</span>
-              <span class="afd-chip">Dependencies</span>
-              <span class="afd-chip">CI/CD</span>
-              <span class="afd-chip">Containers</span>
-              <span class="afd-chip">Configurations</span>
-              <span class="afd-chip">Certificates</span>
-              <span class="afd-chip">Network / TLS</span>
-              <span class="afd-chip">Existing Security Tools</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">2. Ingestion</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">ECDAT Discovery Adapters</span>
-              <span class="afd-chip">Format-Agnostic Normalization</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">3. Grounding</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">Empirical Evidence Chain</span>
-              <span class="afd-chip">Source Context Preservation</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">4. Intelligence</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">Contextual Risk & Uncertainty</span>
-              <span class="afd-chip">Classical & Shor Evaluation</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">5. Migration</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">NIST FIPS 203/204/205 Mapping</span>
-              <span class="afd-chip">Hybrid Transitional Schemes</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">6. Planning</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">Dependency-Ordered Milestones</span>
-              <span class="afd-chip">Actionable Priority Tiers</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">7. Governance</span>
-            <div class="afd-items">
-              <span class="afd-chip highlight">Formal Human Review Gates</span>
-              <span class="afd-chip">Non-Fabrication Policy</span>
-            </div>
-          </div>
-          <div class="afd-arrow-down">↓</div>
-          <div class="afd-row">
-            <span class="afd-label">8. Assurance</span>
-            <div class="afd-items">
-              <span class="afd-chip planned">Continuous CBOM Diff Verification (Phase 9 Future)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- What is Different About the Approach -->
-        <div class="comparison-table-box" style="margin-top: 32px;">
+      <!-- Comparison -->
+      <div class="sources-section reveal-up" style="padding-top: 0;">
+        <h3 class="subsection-title">The Difference</h3>
+        <div class="comparison-table-box">
           <div class="ct-col">
-            <h4>Traditional Discovery Output</h4>
+            <h4>Traditional Discovery</h4>
             <ul class="ct-list">
-              <li>Raw scanner alerts: <em>"RSA found in file.java"</em></li>
-              <li>Opaque severity scores without auditable rationale</li>
-              <li>Guesses or assumes missing properties like bit-length</li>
-              <li>No awareness of operational deployment context</li>
-              <li>Leaves migration planning and target selection to guesswork</li>
+              <li>Raw alerts: <em>"RSA found in file.java"</em></li>
+              <li>Opaque severity scores without rationale</li>
+              <li>Guesses missing properties like bit-length</li>
+              <li>No operational deployment context</li>
+              <li>Migration left to guesswork</li>
             </ul>
           </div>
           <div class="ct-col contrast">
             <h4>The ECDAT Approach</h4>
             <ul class="ct-list">
-              <li><strong>What evidence supports this?</strong> Auditable line and source code context</li>
-              <li><strong>What is it being used for?</strong> Role-aware primitive classification</li>
-              <li><strong>What does it mean?</strong> Formal classical status and quantum exposure</li>
-              <li><strong>How uncertain is the result?</strong> Explicitly flags missing evidence</li>
-              <li><strong>What migration options exist?</strong> NIST FIPS-approved PQC candidates</li>
-              <li><strong>What needs human review?</strong> Mandatory review gates before sign-off</li>
-              <li><strong>What should happen next?</strong> Dependency-ordered milestone roadmap</li>
+              <li><strong>What evidence?</strong> Auditable source context</li>
+              <li><strong>What role?</strong> Role-aware primitive classification</li>
+              <li><strong>What risk?</strong> Classical status and quantum exposure</li>
+              <li><strong>How uncertain?</strong> Explicitly flags missing evidence</li>
+              <li><strong>What target?</strong> NIST FIPS-approved PQC candidates</li>
+              <li><strong>What review?</strong> Mandatory gates before sign-off</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="how-cta-row">
+      <div class="how-cta-row reveal-up">
         <button class="btn-primary-hero" id="btn-how-try">Try it yourself →</button>
       </div>
     </section>
@@ -428,7 +442,7 @@
         </div>
       </div>
 
-      <!-- Selected Asset Lifecycle Tracker (visible on steps 2..8) -->
+      <!-- Lifecycle Tracker -->
       <div id="tracker-container" class="tracker-container-wrap" style="display: none;">
         <div class="asset-lifecycle-tracker" id="asset-lifecycle-tracker">
           <div class="alt-header">
@@ -485,10 +499,7 @@
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- ============================================================= -->
-      <!-- STEP 1: ANALYZE A DEMO PROJECT                                -->
-      <!-- ============================================================= -->
+      <!-- STEP 1: CHOOSE -->
       <div class="journey-panel active" id="step-choose">
         <div class="step-header">
           <span class="step-kicker">Input · Demonstration Project</span>
@@ -501,7 +512,6 @@
         </div>
 
         <div class="demo-project-box single-demo-experience">
-          <!-- Honest Bounded Scope Notice -->
           <div class="scope-disclaimer-card">
             <span class="sd-badge">Bounded Discovery</span>
             <div class="sd-content">
@@ -510,7 +520,6 @@
             </div>
           </div>
 
-          <!-- Dropzone Container -->
           <div class="file-dropzone" id="demo-dropzone" tabindex="0" role="button" aria-label="Drop project archive or click to choose file">
             <input type="file" id="demo-file-input" accept=".zip,.java" style="display: none;">
             <div class="dropzone-prompt" id="dz-prompt-text">
@@ -519,7 +528,7 @@
               <span class="dz-or">or</span>
               <button type="button" class="btn-choose-file" id="btn-choose-file">Choose project</button>
               <div class="dz-supported-types">
-                <span>Supported demonstration input:</span>
+                <span>Supported:</span>
                 <ul>
                   <li><code>.zip</code> project archive</li>
                   <li><code>.java</code> source file</li>
@@ -535,10 +544,8 @@
             </div>
           </div>
 
-          <!-- Validation Error Message Banner -->
           <div id="input-validation-msg" class="validation-message-banner hidden"></div>
 
-          <!-- Action Buttons Row -->
           <div class="step-action-row project-action-controls">
             <button class="btn-run" id="btn-run-analysis" disabled title="Select or load a project to begin analysis">
               <span id="run-btn-text">Analyze Project →</span>
@@ -557,7 +564,7 @@
             </div>
           </div>
 
-          <!-- Lightweight Sample Inspection Panel -->
+          <!-- Sample Inspection Panel -->
           <div id="sample-inspection-box" class="sample-inspection-card hidden">
             <div class="sib-header">
               <div class="sib-title">
@@ -623,7 +630,6 @@
               <span>Discovery mechanism: <strong>Bounded Java source pattern discovery</strong> (JCA construct inspection).</span>
             </div>
           </div>
-          <!-- Preserved Benchmark Regression Scenarios (Retained for regression validation, not shown in primary demo path) -->
           <div id="benchmark-scenarios-store" style="display: none;" aria-hidden="true">
             <div data-scenario="tc01_direct_rsa"></div>
             <div data-scenario="tc02_symmetric_aes"></div>
@@ -632,64 +638,36 @@
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 2: DISCOVER — What did ECDAT find?                        -->
-      <!-- ============================================================= -->
+      <!-- STEP 2: DISCOVER -->
       <div class="journey-panel" id="step-discover">
         <div class="step-header">
           <span class="step-kicker">Step 2 of 8 · Discovery Results</span>
           <h2 class="step-title">What did ECDAT find?</h2>
-          <p class="step-lead">
-            ECDAT analyzed the source code and built a cryptographic inventory. Here's what was discovered.
-          </p>
+          <p class="step-lead">ECDAT analyzed the source code and built a cryptographic inventory.</p>
         </div>
-
         <div class="discovery-results-card">
           <div class="metrics-row">
-            <div class="metric-item">
-              <span class="metric-label">Source</span>
-              <span class="metric-val" id="disc-source">—</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label">Duration</span>
-              <span class="metric-val mono" id="disc-duration">—</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label">Assets Found</span>
-              <span class="metric-val" id="disc-assets-count">—</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label">Priority</span>
-              <span class="metric-val" id="disc-priority">—</span>
-            </div>
+            <div class="metric-item"><span class="metric-label">Source</span><span class="metric-val" id="disc-source">—</span></div>
+            <div class="metric-item"><span class="metric-label">Duration</span><span class="metric-val mono" id="disc-duration">—</span></div>
+            <div class="metric-item"><span class="metric-label">Assets Found</span><span class="metric-val" id="disc-assets-count">—</span></div>
+            <div class="metric-item"><span class="metric-label">Priority</span><span class="metric-val" id="disc-priority">—</span></div>
           </div>
-
-          <div class="discovery-asset-card" id="disc-asset-card">
-            <!-- Populated by JS -->
-          </div>
+          <div class="discovery-asset-card" id="disc-asset-card"></div>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="choose">← Back</button>
           <button class="btn-next" data-next="evidence">Why was this found? →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 3: EVIDENCE — Why does ECDAT believe this?                -->
-      <!-- ============================================================= -->
+      <!-- STEP 3: EVIDENCE -->
       <div class="journey-panel" id="step-evidence">
         <div class="step-header">
           <span class="step-kicker">Step 3 of 8 · Evidence Chain</span>
           <h2 class="step-title">Why does ECDAT believe this?</h2>
-          <p class="step-lead">
-            ECDAT doesn't treat scanner output as truth. It preserves the empirical evidence so analysts 
-            can verify every conclusion.
-          </p>
+          <p class="step-lead">ECDAT doesn't treat scanner output as truth. It preserves empirical evidence for verification.</p>
         </div>
-
         <div class="evidence-content">
-          <!-- Code Snippet -->
           <div class="code-block">
             <div class="code-header-bar">
               <span class="code-filename mono" id="ev-code-file">—</span>
@@ -697,16 +675,10 @@
             </div>
             <pre class="code-pre"><code id="ev-code-snippet">// Loading...</code></pre>
           </div>
-
-          <!-- Evidence Summary -->
           <div class="evidence-summary-card">
             <h3>Evidence Record</h3>
-            <div class="ev-grid" id="ev-summary-grid">
-              <!-- Populated by JS -->
-            </div>
+            <div class="ev-grid" id="ev-summary-grid"></div>
           </div>
-
-          <!-- Provenance Chain (collapsible) -->
           <details class="deep-dive-toggle">
             <summary class="deep-dive-summary">
               <span class="dd-icon">▶</span>
@@ -714,9 +686,7 @@
               <span class="dd-badge">Audit Trail</span>
             </summary>
             <div class="deep-dive-body">
-              <div class="provenance-stepper" id="ev-provenance-stepper">
-                <!-- Populated by JS -->
-              </div>
+              <div class="provenance-stepper" id="ev-provenance-stepper"></div>
               <div class="node-inspector" id="ev-node-inspector">
                 <div class="ni-title" id="ev-ni-title">Click a step above to inspect</div>
                 <pre class="ni-content mono" id="ev-ni-content">Select a provenance stage to view its attributes.</pre>
@@ -724,53 +694,32 @@
             </div>
           </details>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="discover">← Back</button>
           <button class="btn-next" data-next="risk">Understand the risk →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 4: RISK — What matters? What is unknown?                  -->
-      <!-- ============================================================= -->
+      <!-- STEP 4: RISK -->
       <div class="journey-panel" id="step-risk">
         <div class="step-header">
           <span class="step-kicker">Step 4 of 8 · Risk Assessment</span>
           <h2 class="step-title">What matters, and what is still unknown?</h2>
-          <p class="step-lead">
-            ECDAT distinguishes what is empirically known from what is missing — refusing to guess.
-          </p>
+          <p class="step-lead">ECDAT distinguishes what is empirically known from what is missing — refusing to guess.</p>
         </div>
-
         <div class="risk-content">
-          <!-- Known vs Unknown -->
           <div class="known-unknown-split">
             <div class="ku-panel known-panel">
               <div class="ku-header">✓ What ECDAT knows</div>
-              <ul class="ku-list" id="risk-known-list">
-                <!-- Populated by JS -->
-              </ul>
+              <ul class="ku-list" id="risk-known-list"></ul>
             </div>
             <div class="ku-panel unknown-panel">
               <div class="ku-header">? What is not established</div>
-              <ul class="ku-list" id="risk-unknown-list">
-                <!-- Populated by JS -->
-              </ul>
+              <ul class="ku-list" id="risk-unknown-list"></ul>
             </div>
           </div>
-
-          <!-- Explanation -->
-          <div class="risk-explanation" id="risk-explanation">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Risk Dimensions -->
-          <div class="risk-dims-grid" id="risk-dims-grid">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Collapsible: Enterprise Context & Rules -->
+          <div class="risk-explanation" id="risk-explanation"></div>
+          <div class="risk-dims-grid" id="risk-dims-grid"></div>
           <details class="deep-dive-toggle">
             <summary class="deep-dive-summary">
               <span class="dd-icon">▶</span>
@@ -781,37 +730,25 @@
               <div class="context-provenance-banner">
                 <strong class="cpb-title">CONTROLLED DEMONSTRATION CONTEXT</strong> — Operational deployment metadata is simulated configuration for contextual risk evaluation. <em class="cpb-em">It is never presented as discovered from source code.</em>
               </div>
-              <div class="context-grid" id="risk-context-grid">
-                <!-- Populated by JS -->
-              </div>
-              <div class="rules-list" id="risk-rules-list">
-                <!-- Populated by JS -->
-              </div>
+              <div class="context-grid" id="risk-context-grid"></div>
+              <div class="rules-list" id="risk-rules-list"></div>
             </div>
           </details>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="evidence">← Back</button>
           <button class="btn-next" data-next="migration">See migration options →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 5: MIGRATION — What could change?                         -->
-      <!-- ============================================================= -->
+      <!-- STEP 5: MIGRATION -->
       <div class="journey-panel" id="step-migration">
         <div class="step-header">
           <span class="step-kicker">Step 5 of 8 · Migration Options</span>
           <h2 class="step-title">What could change?</h2>
-          <p class="step-lead">
-            ECDAT identifies migration candidates based on the cryptographic role. 
-            These are recommendations — not automatic replacements.
-          </p>
+          <p class="step-lead">ECDAT identifies migration candidates based on cryptographic role. These are recommendations — not automatic replacements.</p>
         </div>
-
         <div class="migration-content">
-          <!-- Transformation Visual -->
           <div class="migration-transform">
             <div class="mt-from">
               <span class="mt-label">Current</span>
@@ -828,18 +765,8 @@
               <span class="mt-standard" id="mig-to-standard">—</span>
             </div>
           </div>
-
-          <!-- Role-Aware Note -->
-          <div class="role-note" id="mig-role-note">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Hybrid Scheme -->
-          <div class="hybrid-card" id="mig-hybrid-card">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Collapsible: Target Details & Agility -->
+          <div class="role-note" id="mig-role-note"></div>
+          <div class="hybrid-card" id="mig-hybrid-card"></div>
           <details class="deep-dive-toggle">
             <summary class="deep-dive-summary">
               <span class="dd-icon">▶</span>
@@ -847,81 +774,51 @@
               <span class="dd-badge">Standards</span>
             </summary>
             <div class="deep-dive-body">
-              <div id="mig-target-details">
-                <!-- Populated by JS -->
-              </div>
-              <div class="agility-card" id="mig-agility-card">
-                <!-- Populated by JS -->
-              </div>
+              <div id="mig-target-details"></div>
+              <div class="agility-card" id="mig-agility-card"></div>
             </div>
           </details>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="risk">← Back</button>
           <button class="btn-next" data-next="plan">Build the plan →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 6: PLAN — What needs to happen?                           -->
-      <!-- ============================================================= -->
+      <!-- STEP 6: PLAN -->
       <div class="journey-panel" id="step-plan">
         <div class="step-header">
           <span class="step-kicker">Step 6 of 8 · Migration Plan</span>
           <h2 class="step-title">What needs to happen?</h2>
-          <p class="step-lead">
-            ECDAT organizes migration work into dependency-ordered milestones with prerequisites and blockers.
-          </p>
+          <p class="step-lead">Dependency-ordered milestones with prerequisites and blockers.</p>
         </div>
-
         <div class="plan-content">
-          <div class="advisory-note">
-            <strong>Advisory:</strong> Milestones are decision-support groupings, not guaranteed deadlines or automated deployments.
-          </div>
-
-          <div class="milestone-card-hero" id="plan-milestone-card">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Collapsible: All Milestones -->
+          <div class="advisory-note"><strong>Advisory:</strong> Milestones are decision-support groupings, not guaranteed deadlines.</div>
+          <div class="milestone-card-hero" id="plan-milestone-card"></div>
           <details class="deep-dive-toggle">
             <summary class="deep-dive-summary">
               <span class="dd-icon">▶</span>
-              <strong>View all milestones in this analysis run</strong>
+              <strong>View all milestones</strong>
               <span class="dd-badge">Roadmap</span>
             </summary>
-            <div class="deep-dive-body" id="plan-all-milestones">
-              <!-- Populated by JS -->
-            </div>
+            <div class="deep-dive-body" id="plan-all-milestones"></div>
           </details>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="migration">← Back</button>
           <button class="btn-next" data-next="review">Review the decision →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 7: REVIEW — Where does a human decide?                    -->
-      <!-- ============================================================= -->
+      <!-- STEP 7: REVIEW -->
       <div class="journey-panel" id="step-review">
         <div class="step-header">
           <span class="step-kicker">Step 7 of 8 · Human Review Gate</span>
           <h2 class="step-title">Where does a human need to decide?</h2>
-          <p class="step-lead">
-            ECDAT assists decisions — it doesn't invent missing facts. When evidence is incomplete, 
-            formal review gates block engineering release until a human verifies.
-          </p>
+          <p class="step-lead">ECDAT assists decisions — it doesn't invent missing facts.</p>
         </div>
-
         <div class="review-content">
-          <div class="review-gate-card" id="review-gate-card">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Collapsible: All Gates & Protocol -->
+          <div class="review-gate-card" id="review-gate-card"></div>
           <details class="deep-dive-toggle">
             <summary class="deep-dive-summary">
               <span class="dd-icon">▶</span>
@@ -930,124 +827,51 @@
             </summary>
             <div class="deep-dive-body">
               <div class="review-protocol-flow">
-                <div class="rpf-step">
-                  <span class="rpf-label">Automated Discovery</span>
-                </div>
+                <div class="rpf-step"><span class="rpf-label">Automated Discovery</span></div>
                 <span class="rpf-arrow">→</span>
-                <div class="rpf-step">
-                  <span class="rpf-label">Uncertainty Policy</span>
-                </div>
+                <div class="rpf-step"><span class="rpf-label">Uncertainty Policy</span></div>
                 <span class="rpf-arrow">→</span>
-                <div class="rpf-step rpf-highlight">
-                  <span class="rpf-label">Formal Review Gate</span>
-                </div>
+                <div class="rpf-step rpf-highlight"><span class="rpf-label">Formal Review Gate</span></div>
                 <span class="rpf-arrow">→</span>
-                <div class="rpf-step">
-                  <span class="rpf-label">Analyst Verification</span>
-                </div>
+                <div class="rpf-step"><span class="rpf-label">Analyst Verification</span></div>
                 <span class="rpf-arrow">→</span>
-                <div class="rpf-step">
-                  <span class="rpf-label">Release Approval</span>
-                </div>
+                <div class="rpf-step"><span class="rpf-label">Release Approval</span></div>
               </div>
-              <div id="review-all-gates">
-                <!-- Populated by JS -->
-              </div>
+              <div id="review-all-gates"></div>
             </div>
           </details>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="plan">← Back</button>
-          <button class="btn-next" data-next="verify">See how verification closes the loop →</button>
+          <button class="btn-next" data-next="verify">See verification →</button>
         </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- STEP 8: VERIFY — How do we know the change worked?             -->
-      <!-- ============================================================= -->
+      <!-- STEP 8: VERIFY -->
       <div class="journey-panel" id="step-verify">
         <div class="step-header">
           <span class="step-kicker">Step 8 of 8 · Planned Capability</span>
           <h2 class="step-title">How do we know the change worked?</h2>
-          <p class="step-lead">
-            In the complete product vision, post-migration verification rescans the environment and compares 
-            cryptographic state against the pre-migration baseline.
-          </p>
+          <p class="step-lead">Post-migration verification rescans and compares cryptographic state against pre-migration baseline.</p>
         </div>
-
         <div class="verify-content">
           <div class="future-badge-note">
-            <span class="future-badge">CONTROLLED / FUTURE (PHASE 9)</span>
-            <strong>Architectural Disclosure:</strong> Post-migration verification is on the product roadmap. 
-            The ECDAT analytical core in this prototype executes Phases 0–4 (Discovery, Evidence, Understanding, Risk, Migration Target Selection, Milestone Planning, and Human Review Gates). 
-            No automated code refactoring, migration completion, or active post-migration verification has been executed in this prototype.
+            <span class="future-badge">FUTURE · PHASE 9</span>
+            <strong>Architectural Disclosure:</strong> Post-migration verification is on the product roadmap.
+            The ECDAT analytical core executes Phases 0–4 in this prototype.
           </div>
-
           <div class="verify-steps-flow">
-            <div class="vs-card">
-              <span class="vs-num">01</span>
-              <h4>Baseline CBOM</h4>
-              <p>Snapshot current CycloneDX 1.7 cryptographic inventory from pre-migration scan.</p>
-            </div>
-            <div class="vs-card">
-              <span class="vs-num">02</span>
-              <h4>Code Migration</h4>
-              <p>Refactor with PQC-capable provider (e.g. Bouncy Castle 1.78+ / OpenSSL 3.2+).</p>
-            </div>
-            <div class="vs-card">
-              <span class="vs-num">03</span>
-              <h4>Discovery Re-Scan</h4>
-              <p>Run discovery adapter on migrated codebase under identical scan profile.</p>
-            </div>
-            <div class="vs-card">
-              <span class="vs-num">04</span>
-              <h4>CBOM Diff Engine</h4>
-              <p>Compute semantic delta between baseline and post-migration inventory.</p>
-            </div>
-            <div class="vs-card">
-              <span class="vs-num">05</span>
-              <h4>Quantum Assurance</h4>
-              <p>Verify zero residual Shor-vulnerable primitives and validate migration gates.</p>
-            </div>
+            <div class="vs-card"><span class="vs-num">01</span><h4>Baseline CBOM</h4><p>Snapshot current CycloneDX 1.7 cryptographic inventory.</p></div>
+            <div class="vs-card"><span class="vs-num">02</span><h4>Code Migration</h4><p>Refactor with PQC-capable provider.</p></div>
+            <div class="vs-card"><span class="vs-num">03</span><h4>Re-Scan</h4><p>Run discovery on migrated codebase.</p></div>
+            <div class="vs-card"><span class="vs-num">04</span><h4>CBOM Diff</h4><p>Compute semantic delta between inventories.</p></div>
+            <div class="vs-card"><span class="vs-num">05</span><h4>Assurance</h4><p>Verify zero residual Shor-vulnerable primitives.</p></div>
           </div>
-
-          <!-- Projected Diff Specification -->
-          <details class="deep-dive-toggle">
-            <summary class="deep-dive-summary">
-              <span class="dd-icon">▶</span>
-              <strong>View projected cryptographic diff schema</strong>
-              <span class="dd-badge">ARCHITECTURAL PROJECTION</span>
-            </summary>
-            <div class="deep-dive-body">
-              <div class="future-badge-note">
-                <span class="future-badge">PROJECTED: QUANTUM-RESILIENT (PHASE 9)</span>
-                Target state validation via automated cryptographic inventory diff comparison.
-              </div>
-              <div class="diff-schema-description">
-                <p><strong>Planned Verification Specification (Phase 9 Future):</strong></p>
-                <ul>
-                  <li>Pre-migration baseline inventory is extracted directly from the Phase 0–4 analytical core.</li>
-                  <li>Post-refactoring discovery scan executes against migrated artifacts.</li>
-                  <li>Cryptographic diff engine compares asset attributes, classical security status, and PQC target attainment.</li>
-                  <li>Residual risk policy verifies whether all blocking human review gates have been cleared.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
-
           <div class="verify-roadmap-note">
-            <div class="vrn-title">
-              <span>ℹ️</span> Prototype Execution Boundary
-            </div>
-            <p class="vrn-desc">
-              This demonstration successfully traces from raw Java source observations through evidence preservation, 
-              canonical asset normalization, deterministic risk evaluation, role-aware NIST PQC target mapping, 
-              dependency-ordered milestone planning, and mandatory human review gates. Future phases will introduce automated diff engines and continuous assurance.
-            </p>
+            <div class="vrn-title"><span>ℹ️</span> Prototype Execution Boundary</div>
+            <p class="vrn-desc">This prototype traces from raw Java source observations through evidence preservation, risk evaluation, PQC target mapping, milestone planning, and human review gates. Future phases introduce automated diff engines and continuous assurance.</p>
           </div>
         </div>
-
         <div class="step-nav-row">
           <button class="btn-back" data-prev="review">← Back</button>
           <button class="btn-restart" id="btn-restart">Restart / Analyze another project →</button>
@@ -1057,49 +881,51 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- FOOTER (Exact Orbit Footer Composition)                           -->
+    <!-- FOOTER                                                            -->
     <!-- ================================================================= -->
     <footer class="app-footer">
-      <div class="footer-top">
-        <span class="footer-kicker">ECDAT Intelligence Core</span>
-        <h2 class="footer-brand-statement">From complexity to clarity — auditable cryptographic decision support.</h2>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom-grid">
-        <div class="footer-col">
-          <span class="footer-col-label">Directory</span>
-          <div class="footer-links">
-            <a href="#top" class="footer-link top-tab-jump" data-target="section-overview">Overview</a>
-            <a href="#top" class="footer-link top-tab-jump" data-target="section-how">Architecture</a>
-            <a href="#top" class="footer-link top-tab-jump" data-target="section-try">Try ECDAT</a>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <span class="footer-kicker">ECDAT Intelligence Core</span>
+          <h2 class="footer-brand-statement">From complexity to clarity —<br>auditable cryptographic decision support.</h2>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom-grid">
+          <div class="footer-col">
+            <span class="footer-col-label">Directory</span>
+            <div class="footer-links">
+              <a href="#top" class="footer-link top-tab-jump" data-target="section-overview">Overview</a>
+              <a href="#top" class="footer-link top-tab-jump" data-target="section-how">Architecture</a>
+              <a href="#top" class="footer-link top-tab-jump" data-target="section-try">Try ECDAT</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-label">Standards Compliance</span>
+            <div class="footer-links">
+              <span class="footer-info">NIST FIPS 203 (ML-KEM)</span>
+              <span class="footer-info">NIST FIPS 204 (ML-DSA)</span>
+              <span class="footer-info">NIST FIPS 205 (SLH-DSA)</span>
+              <span class="footer-info">SP 800-227 / RFC 9370 (Hybrid)</span>
+            </div>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-label">Assurance Protocol</span>
+            <div class="footer-links">
+              <span class="footer-info">Zero Synthetic Verdicts</span>
+              <span class="footer-info">Empirical Evidence Traceability</span>
+              <span class="footer-info">Mandatory Human Review Gates</span>
+            </div>
           </div>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-label">Standards Compliance</span>
-          <div class="footer-links">
-            <span class="footer-info">NIST FIPS 203 (ML-KEM)</span>
-            <span class="footer-info">NIST FIPS 204 (ML-DSA)</span>
-            <span class="footer-info">NIST FIPS 205 (SLH-DSA)</span>
-            <span class="footer-info">SP 800-227 / RFC 9370 (Hybrid)</span>
-          </div>
+        <div class="footer-copyright">
+          <span>© 2026 ECDAT — Enterprise Cryptographic Discovery & Analysis Tool</span>
+          <span class="footer-sep">·</span>
+          <span>Verified Analytical Foundation</span>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-label">Assurance Protocol</span>
-          <div class="footer-links">
-            <span class="footer-info">Zero Synthetic Verdicts</span>
-            <span class="footer-info">Empirical Evidence Traceability</span>
-            <span class="footer-info">Mandatory Human Review Gates</span>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <span>© 2026 ECDAT — Enterprise Cryptographic Discovery & Analysis Tool</span>
-        <span class="footer-sep">·</span>
-        <span>Verified Analytical Foundation</span>
       </div>
     </footer>
   </div>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

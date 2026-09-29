@@ -1151,9 +1151,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // SCROLL REVEAL ANIMATIONS (IntersectionObserver — lightweight)
+  // =========================================================================
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal-up, .reveal-section').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // Re-trigger reveals when switching sections (since they start hidden)
+  const originalSwitchSection = switchSection;
+  switchSection = function(sectionId) {
+    originalSwitchSection(sectionId);
+    // After section becomes visible, observe its reveal elements
+    requestAnimationFrame(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.querySelectorAll('.reveal-up, .reveal-section').forEach(el => {
+          // Reset and re-observe for re-entry animation
+          el.classList.remove('visible');
+          revealObserver.observe(el);
+        });
+      }
+    });
+  };
+
+  // =========================================================================
   // INITIAL SETUP
   // =========================================================================
-  selectScenario('tc01_direct_rsa');
   resetAnalysisState();
   goToStep('choose');
+
+  // Trigger hero reveals on initial load
+  requestAnimationFrame(() => {
+    document.querySelectorAll('#section-overview .reveal-up').forEach(el => {
+      el.classList.add('visible');
+    });
+  });
 });
