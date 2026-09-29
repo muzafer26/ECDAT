@@ -1151,50 +1151,58 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // SCROLL REVEAL ANIMATIONS (IntersectionObserver — lightweight)
-  // =========================================================================
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  document.querySelectorAll('.reveal-up, .reveal-section').forEach(el => {
-    revealObserver.observe(el);
-  });
-
-  // Re-trigger reveals when switching sections (since they start hidden)
-  const originalSwitchSection = switchSection;
-  switchSection = function(sectionId) {
-    originalSwitchSection(sectionId);
-    // After section becomes visible, observe its reveal elements
-    requestAnimationFrame(() => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.querySelectorAll('.reveal-up, .reveal-section').forEach(el => {
-          // Reset and re-observe for re-entry animation
-          el.classList.remove('visible');
-          revealObserver.observe(el);
-        });
-      }
-    });
-  };
-
-  // =========================================================================
   // INITIAL SETUP
   // =========================================================================
+  selectedScenarioId = 'tc01_direct_rsa';
   resetAnalysisState();
   goToStep('choose');
 
-  // Trigger hero reveals on initial load
-  requestAnimationFrame(() => {
-    document.querySelectorAll('#section-overview .reveal-up').forEach(el => {
-      el.classList.add('visible');
+  // =========================================================================
+  // OPTIONAL LIGHTWEIGHT SCROLL TEXT REVEAL (Section Headings Only)
+  // =========================================================================
+  if ('IntersectionObserver' in window) {
+    const textObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('text-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.editorial-headline, .editorial-headline-centered').forEach(el => {
+      el.classList.add('text-reveal-target');
+      textObserver.observe(el);
     });
-  });
+  }
+
+  // =========================================================================
+  // GRADIENT WAVES (Hero Background)
+  // =========================================================================
+  const wavesContainer = document.getElementById('hero-gradient-waves');
+  if (wavesContainer && typeof GradientWaves !== 'undefined') {
+    new GradientWaves(wavesContainer, {
+      horizonColor: "#6b8a3c",
+      waveColor: "#d2f83c",
+      crestColor: "#FFFFFF",
+      speed: 0.4,
+      amplitude: 2.5,
+      waveScale: 0.6,
+      waveRatio: 0.9,
+      swell: 35,
+      turbulence: 20,
+      tilt: 1.11,
+      zoom: 1,
+      height: 5.5,
+      fogDepth: 16,
+      detail: "medium",
+      brightness: 0.82,
+      opacity: 0.85,
+      mouseInteraction: false,
+      parallaxStrength: 0.0,
+      grain: true,
+      grainIntensity: 0.05
+    });
+  }
 });
+
