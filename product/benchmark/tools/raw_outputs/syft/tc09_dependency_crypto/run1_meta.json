@@ -1,0 +1,16 @@
+{
+  "tool": "syft",
+  "version": "1.51.1",
+  "test_case": "TC-09",
+  "target": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc09_dependency_crypto",
+  "command": [
+    "D:\\SIH\\product\\benchmark\\tools\\verified\\syft\\syft.exe",
+    "scan",
+    "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc09_dependency_crypto",
+    "-o",
+    "json"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 3.2201301000000058,
+  "timestamp": "2026-09-13T14:59:41.073438+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "test_case_id": "TC-10",
+  "title": "Misleading Comments, Decoy Variables & String Literals (NEGATIVE CASE)",
+  "description": "Tests false-positive rejection against non-functional cryptographic keywords embedded in comments, variable names, URLs, and logger strings.",
+  "language": "Java",
+  "negative_case": true,
+  "ambiguous_case": false,
+  "expected_findings": [],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & AST Call Site Verification"
+  }
+}

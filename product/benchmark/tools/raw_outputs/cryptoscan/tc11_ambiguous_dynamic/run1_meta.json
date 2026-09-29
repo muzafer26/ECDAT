@@ -1,0 +1,17 @@
+{
+  "tool": "cryptoscan",
+  "version": "1.4.0",
+  "test_case": "TC-11",
+  "target": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc11_ambiguous_dynamic",
+  "command": [
+    "D:\\SIH\\product\\benchmark\\tools\\verified\\cryptoscan\\cryptoscan.exe",
+    "scan",
+    "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc11_ambiguous_dynamic",
+    "--format",
+    "json",
+    "--include-quantum-safe"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 0.07797600000003513,
+  "timestamp": "2026-09-13T14:59:37.783140+00:00"
+}

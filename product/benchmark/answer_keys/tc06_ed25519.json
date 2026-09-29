@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-06",
+  "title": "Modern Ed25519 Edwards-Curve Digital Signature",
+  "description": "Tests modern Edwards-curve JCA Signature instantiation with Ed25519 algorithm.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC06-F01",
+      "observed_fact": {
+        "file": "Ed25519Signature.java",
+        "line_start": 19,
+        "line_end": 22,
+        "code_snippet": "Signature signature = Signature.getInstance(ALGORITHM);\nsignature.initSign(privateKey);",
+        "raw_statement": "Signature.getInstance(\"Ed25519\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "Ed25519",
+        "variant": null,
+        "cryptographic_primitive": "digital_signature",
+        "role": "digital_signature",
+        "parameters": {
+          "key_size_bits": 256,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "shor_vulnerable"
+      },
+      "evaluation_notes": "Scanners must recognize Ed25519 signature algorithm (RFC 8032). Ed25519 is a digital signature scheme distinct from X25519/Curve25519 key agreement. Operational role is determinable as digital_signature based on Signature API usage. curve_name is null as no explicit curve parameter is passed in code."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

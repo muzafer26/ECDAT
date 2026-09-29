@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-03",
+  "title": "Generic Elliptic Curve (ECC) Key Pair Generation",
+  "description": "Tests generic ECC KeyPairGenerator with named curve secp256r1 (NIST P-256).",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC03-F01",
+      "observed_fact": {
+        "file": "EccKeyGen.java",
+        "line_start": 18,
+        "line_end": 22,
+        "code_snippet": "KeyPairGenerator keyGen = KeyPairGenerator.getInstance(\"EC\");\nECGenParameterSpec ecSpec = new ECGenParameterSpec(\"secp256r1\");\nkeyGen.initialize(ecSpec);",
+        "raw_statement": "KeyPairGenerator.getInstance(\"EC\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "EC",
+        "variant": "secp256r1",
+        "cryptographic_primitive": "asymmetric_key_pair",
+        "role": "unknown",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": "secp256r1"
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "shor_vulnerable"
+      },
+      "evaluation_notes": "Scanners must extract EC algorithm and secp256r1 named curve parameter. key_size_bits is set to null to avoid conflating curve field/group order size (256-bit for secp256r1) with an explicit key size parameter. Operational role MUST be UNKNOWN because raw key generation does not establish whether keys are used for ECDSA signatures or ECDH key agreement."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

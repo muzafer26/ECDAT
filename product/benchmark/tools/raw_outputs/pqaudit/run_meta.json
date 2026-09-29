@@ -1,0 +1,8 @@
+{
+  "tool": "pqaudit",
+  "version": "0.5.0",
+  "status": "EXECUTION_FAILURE",
+  "reason": "Missing unbundled runtime npm dependencies (commander, chalk, glob, web-tree-sitter, yaml)",
+  "exit_code": 1,
+  "error_type": "ERR_MODULE_NOT_FOUND"
+}

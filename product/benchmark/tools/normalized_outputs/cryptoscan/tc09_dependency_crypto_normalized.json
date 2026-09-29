@@ -1,0 +1,29 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-09",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc09_dependency_crypto/run1_output.json",
+    "finding_reference": "DEP-Bouncy Castle-pom.xml",
+    "finding_index": 0,
+    "detected_asset": "RSA, ECC, AES, ML-KEM, ML-DSA",
+    "detected_primitive": "kem",
+    "category": "dependency",
+    "location": {
+      "file": "pom.xml",
+      "line_start": 1,
+      "line_end": 1,
+      "column": null
+    },
+    "role": "UNKNOWN",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "HIGH",
+    "quantum_risk": "SAFE",
+    "raw_context": "Version: "
+  }
+]

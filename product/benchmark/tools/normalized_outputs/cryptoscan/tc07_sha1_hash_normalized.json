@@ -1,0 +1,83 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-07",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc07_sha1_hash/run1_output.json",
+    "finding_reference": "SHA1-001-2-43",
+    "finding_index": 0,
+    "detected_asset": "SHA-1",
+    "detected_primitive": "hash",
+    "category": "Deprecated Hash",
+    "location": {
+      "file": "sha1_hash.py",
+      "line_start": 2,
+      "line_end": 2,
+      "column": 44
+    },
+    "role": "hashing",
+    "parameters": {
+      "key_size_bits": 63,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "TC-07: Legacy Cryptographic Hash Function (SHA-1)."
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-07",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc07_sha1_hash/run1_output.json",
+    "finding_reference": "SHA1-001-3-58",
+    "finding_index": 1,
+    "detected_asset": "SHA-1",
+    "detected_primitive": "hash",
+    "category": "Deprecated Hash",
+    "location": {
+      "file": "sha1_hash.py",
+      "line_start": 3,
+      "line_end": 3,
+      "column": 59
+    },
+    "role": "hashing",
+    "parameters": {
+      "key_size_bits": 63,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "Purpose: Tests whether a discovery tool identifies legacy SHA-1 hash usage in Python"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-07",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc07_sha1_hash/run1_output.json",
+    "finding_reference": "SHA1-001-11-13",
+    "finding_index": 2,
+    "detected_asset": "SHA-1",
+    "detected_primitive": "hash",
+    "category": "Deprecated Hash",
+    "location": {
+      "file": "sha1_hash.py",
+      "line_start": 11,
+      "line_end": 11,
+      "column": 14
+    },
+    "role": "hashing",
+    "parameters": {
+      "key_size_bits": 63,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "hasher = hashlib.sha1()"
+  }
+]

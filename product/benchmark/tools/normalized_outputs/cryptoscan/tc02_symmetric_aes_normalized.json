@@ -1,0 +1,56 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-02",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc02_symmetric_aes/run1_output.json",
+    "finding_reference": "AES-001-21-53",
+    "finding_index": 0,
+    "detected_asset": "AES",
+    "detected_primitive": "block-cipher",
+    "category": "Symmetric Encryption",
+    "location": {
+      "file": "AesGcmCipher.java",
+      "line_start": 21,
+      "line_end": 21,
+      "column": 54
+    },
+    "role": "encryption",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "PARTIAL",
+    "raw_context": "SecretKey key = new SecretKeySpec(keyBytes, \"AES\");"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-02",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc02_symmetric_aes/run1_output.json",
+    "finding_reference": "AES-001-16-50",
+    "finding_index": 1,
+    "detected_asset": "AES",
+    "detected_primitive": "block-cipher",
+    "category": "Symmetric Encryption",
+    "location": {
+      "file": "AesGcmCipher.java",
+      "line_start": 16,
+      "line_end": 16,
+      "column": 51
+    },
+    "role": "encryption",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "LOW",
+    "quantum_risk": "PARTIAL",
+    "raw_context": "private static final String TRANSFORMATION = \"AES/GCM/NoPadding\";"
+  }
+]

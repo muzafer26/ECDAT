@@ -1,0 +1,29 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-01",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc01_direct_rsa/run1_output.json",
+    "finding_reference": "RSA-001-16-64",
+    "finding_index": 0,
+    "detected_asset": "RSA",
+    "detected_primitive": "pke",
+    "category": "Asymmetric Encryption",
+    "location": {
+      "file": "DirectRSAKeyGen.java",
+      "line_start": 16,
+      "line_end": 16,
+      "column": 65
+    },
+    "role": "general",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "KeyPairGenerator keyGen = KeyPairGenerator.getInstance(\"RSA\");"
+  }
+]

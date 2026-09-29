@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-05",
+  "title": "Explicit ECDH Key Agreement",
+  "description": "Tests explicit JCA KeyAgreement instantiation with ECDH algorithm.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC05-F01",
+      "observed_fact": {
+        "file": "EcdhKeyAgreement.java",
+        "line_start": 20,
+        "line_end": 23,
+        "code_snippet": "KeyAgreement keyAgreement = KeyAgreement.getInstance(AGREEMENT_ALGORITHM);\nkeyAgreement.init(privateKey);",
+        "raw_statement": "KeyAgreement.getInstance(\"ECDH\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "ECDH",
+        "variant": null,
+        "cryptographic_primitive": "key_agreement",
+        "role": "key_establishment",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "shor_vulnerable"
+      },
+      "evaluation_notes": "Scanners must extract ECDH algorithm. Operational role is determinable as key_establishment based on JCA KeyAgreement API usage."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

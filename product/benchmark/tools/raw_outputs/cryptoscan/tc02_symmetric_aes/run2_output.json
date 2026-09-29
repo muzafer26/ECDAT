@@ -1,0 +1,219 @@
+{
+  "tool": {
+    "name": "CryptoScan",
+    "version": "1.4.0"
+  },
+  "findings": [
+    {
+      "id": "AES-001-21-53",
+      "type": "AES Algorithm",
+      "findingType": "algorithm",
+      "category": "Symmetric Encryption",
+      "algorithm": "AES",
+      "primitive": "block-cipher",
+      "migrationStatus": "PARTIAL",
+      "qrammMapping": {
+        "dimension": "CVI",
+        "practice": "1.2",
+        "evidence": "Quantum vulnerability assessment and classification"
+      },
+      "file": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc02_symmetric_aes\\AesGcmCipher.java",
+      "line": 21,
+      "column": 54,
+      "match": "AES",
+      "context": "SecretKey key = new SecretKeySpec(keyBytes, \"AES\");",
+      "sourceContext": {
+        "lines": [
+          {
+            "number": 18,
+            "content": "",
+            "isMatch": false
+          },
+          {
+            "number": 19,
+            "content": "    public byte[] encrypt(byte[] plaintext, byte[] keyBytes, byte[] iv) throws GeneralSecurityException {",
+            "isMatch": false
+          },
+          {
+            "number": 20,
+            "content": "        // Line 21: Secret key instantiation specifying AES algorithm",
+            "isMatch": false
+          },
+          {
+            "number": 21,
+            "content": "        SecretKey key = new SecretKeySpec(keyBytes, \"AES\");",
+            "isMatch": true
+          },
+          {
+            "number": 22,
+            "content": "        ",
+            "isMatch": false
+          },
+          {
+            "number": 23,
+            "content": "        // Line 24: Direct JCA Cipher instantiation with AES in GCM mode without padding",
+            "isMatch": false
+          },
+          {
+            "number": 24,
+            "content": "        Cipher cipher = Cipher.getInstance(TRANSFORMATION);",
+            "isMatch": false
+          }
+        ],
+        "startLine": 18,
+        "endLine": 24,
+        "matchLine": 21
+      },
+      "severity": 0,
+      "quantumRisk": "PARTIAL",
+      "confidence": "MEDIUM",
+      "purpose": "encryption",
+      "language": "java",
+      "fileType": "code",
+      "description": "AES detected. AES-256 provides adequate quantum resistance. AES-128 security is reduced to 64-bit against Grover's algorithm.",
+      "remediation": "Use AES-256 for quantum resistance. Avoid AES-ECB mode.",
+      "impact": "Reduced security margin against quantum attacks; acceptable with increased key sizes",
+      "effort": "Algorithm replacement - medium effort",
+      "tags": [
+        "symmetric",
+        "quantum-partial"
+      ]
+    },
+    {
+      "id": "AES-001-16-50",
+      "type": "AES Algorithm",
+      "findingType": "algorithm",
+      "category": "Symmetric Encryption",
+      "algorithm": "AES",
+      "primitive": "block-cipher",
+      "migrationStatus": "PARTIAL",
+      "qrammMapping": {
+        "dimension": "CVI",
+        "practice": "1.2",
+        "evidence": "Quantum vulnerability assessment and classification"
+      },
+      "file": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc02_symmetric_aes\\AesGcmCipher.java",
+      "line": 16,
+      "column": 51,
+      "match": "AES",
+      "context": "private static final String TRANSFORMATION = \"AES/GCM/NoPadding\";",
+      "sourceContext": {
+        "lines": [
+          {
+            "number": 13,
+            "content": " */",
+            "isMatch": false
+          },
+          {
+            "number": 14,
+            "content": "public class AesGcmCipher {",
+            "isMatch": false
+          },
+          {
+            "number": 15,
+            "content": "",
+            "isMatch": false
+          },
+          {
+            "number": 16,
+            "content": "    private static final String TRANSFORMATION = \"AES/GCM/NoPadding\";",
+            "isMatch": true
+          },
+          {
+            "number": 17,
+            "content": "    private static final int TAG_LENGTH_BITS = 128;",
+            "isMatch": false
+          },
+          {
+            "number": 18,
+            "content": "",
+            "isMatch": false
+          },
+          {
+            "number": 19,
+            "content": "    public byte[] encrypt(byte[] plaintext, byte[] keyBytes, byte[] iv) throws GeneralSecurityException {",
+            "isMatch": false
+          }
+        ],
+        "startLine": 13,
+        "endLine": 19,
+        "matchLine": 16
+      },
+      "severity": 0,
+      "quantumRisk": "PARTIAL",
+      "confidence": "LOW",
+      "purpose": "encryption",
+      "language": "java",
+      "fileType": "code",
+      "description": "AES detected. AES-256 provides adequate quantum resistance. AES-128 security is reduced to 64-bit against Grover's algorithm.",
+      "remediation": "Use AES-256 for quantum resistance. Avoid AES-ECB mode.",
+      "impact": "Reduced security margin against quantum attacks; acceptable with increased key sizes",
+      "effort": "Algorithm replacement - medium effort",
+      "tags": [
+        "symmetric",
+        "quantum-partial"
+      ]
+    }
+  ],
+  "summary": {
+    "totalFindings": 2,
+    "bySeverity": {
+      "INFO": 2
+    },
+    "byCategory": {
+      "Symmetric Encryption": 2
+    },
+    "byQuantumRisk": {
+      "PARTIAL": 2
+    },
+    "byConfidence": {
+      "LOW": 1,
+      "MEDIUM": 1
+    },
+    "byFileType": {
+      "code": 2
+    },
+    "byLanguage": {
+      "java": 2
+    },
+    "quantumVulnerableCount": 0,
+    "highConfidenceCount": 0,
+    "actionableCount": 0,
+    "narrativeSuppressedCount": 2
+  },
+  "migrationScore": {
+    "score": 30,
+    "level": "HIGH",
+    "safeCount": 0,
+    "hybridCount": 0,
+    "partialCount": 2,
+    "vulnerableCount": 0,
+    "criticalCount": 0,
+    "totalCount": 2,
+    "byPrimitive": {
+      "block-cipher": 2
+    },
+    "byAlgorithm": {
+      "AES": 2
+    },
+    "qrammReadiness": {
+      "cviScore": 40,
+      "discoveryLevel": 3,
+      "assessmentLevel": 3,
+      "mappingLevel": 2,
+      "recommendations": [
+        "No quantum-safe algorithms detected. Begin PQC adoption planning."
+      ]
+    }
+  },
+  "insights": null,
+  "scanTarget": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc02_symmetric_aes",
+  "scanTime": "2026-09-13T20:29:36.3434103+05:30",
+  "scanDuration": 16306700,
+  "filesScanned": 1,
+  "linesScanned": 33,
+  "bytesScanned": 1346,
+  "languageStats": {
+    "java": 1
+  }
+}

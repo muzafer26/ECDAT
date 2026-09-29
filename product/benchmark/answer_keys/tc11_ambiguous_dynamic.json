@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-11",
+  "title": "Ambiguous & Dynamic Runtime Cryptographic Invocation",
+  "description": "Tests preservation of uncertainty when Cipher transformation is determined dynamically at runtime via environment variable or system property.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": true,
+  "expected_findings": [
+    {
+      "finding_id": "TC11-F01",
+      "observed_fact": {
+        "file": "DynamicCipherService.java",
+        "line_start": 23,
+        "line_end": 26,
+        "code_snippet": "Cipher cipher = Cipher.getInstance(configuredTransformation);\ncipher.init(Cipher.ENCRYPT_MODE, key);",
+        "raw_statement": "Cipher.getInstance(configuredTransformation)"
+      },
+      "expected_interpretation": {
+        "algorithm": "UNKNOWN",
+        "variant": null,
+        "cryptographic_primitive": "unknown_primitive",
+        "role": "encryption_decryption",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "ambiguous",
+        "expected_confidence": "NEEDS_REVIEW",
+        "quantum_vulnerability_class": "unknown"
+      },
+      "evaluation_notes": "The discovery tool MUST NOT invent an algorithm name (e.g. guessing AES or DES). It must identify the JCA Cipher call, classify the algorithm as UNKNOWN, and assign confidence strictly as NEEDS_REVIEW."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & Dynamic Variable Data Flow Verification"
+  }
+}

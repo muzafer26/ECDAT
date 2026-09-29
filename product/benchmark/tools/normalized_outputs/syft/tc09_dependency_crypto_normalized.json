@@ -1,0 +1,46 @@
+[
+  {
+    "tool": "Syft",
+    "version": "1.51.1",
+    "test_case": "TC-09",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/syft/tc09_dependency_crypto/run1_output.json",
+    "finding_reference": "d793fd382332022e",
+    "finding_index": 0,
+    "detected_asset": "bcprov-jdk18on",
+    "detected_version": "1.78.1",
+    "package_type": "java-archive",
+    "purl": "pkg:maven/org.bouncycastle/bcprov-jdk18on@1.78.1",
+    "found_by": "java-pom-cataloger",
+    "location": {
+      "file": "pom.xml",
+      "path": "\\pom.xml"
+    },
+    "role": "dependency_package",
+    "parameters": null,
+    "confidence": "HIGH",
+    "classification": "SUPPLEMENTAL_FINDING",
+    "notes": "Syft catalogs package manifest dependency; does not detect source algorithm usage"
+  },
+  {
+    "tool": "Syft",
+    "version": "1.51.1",
+    "test_case": "TC-09",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/syft/tc09_dependency_crypto/run1_output.json",
+    "finding_reference": "91839e1c4e74064d",
+    "finding_index": 1,
+    "detected_asset": "tc09-dependency-crypto",
+    "detected_version": "1.0.0",
+    "package_type": "java-archive",
+    "purl": "pkg:maven/security.benchmark/tc09-dependency-crypto@1.0.0",
+    "found_by": "java-pom-cataloger",
+    "location": {
+      "file": "pom.xml",
+      "path": "\\pom.xml"
+    },
+    "role": "dependency_package",
+    "parameters": null,
+    "confidence": "HIGH",
+    "classification": "SUPPLEMENTAL_FINDING",
+    "notes": "Syft catalogs package manifest dependency; does not detect source algorithm usage"
+  }
+]

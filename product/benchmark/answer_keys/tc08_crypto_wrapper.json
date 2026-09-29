@@ -1,0 +1,67 @@
+{
+  "test_case_id": "TC-08",
+  "title": "Cryptographic Call Behind Internal Helper / Wrapper",
+  "description": "Tests detection of cryptographic algorithm DES within an internal helper class (LegacyCryptoHelper) and indirect invocation from application logic (DataEncryptor).",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC08-F01",
+      "observed_fact": {
+        "file": "LegacyCryptoHelper.java",
+        "line_start": 20,
+        "line_end": 26,
+        "code_snippet": "SecretKey key = new SecretKeySpec(keyBytes, \"DES\");\nCipher cipher = Cipher.getInstance(ALGORITHM);\ncipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(ivBytes));",
+        "raw_statement": "Cipher.getInstance(\"DES/CBC/PKCS5Padding\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "DES",
+        "variant": "DES-CBC",
+        "cryptographic_primitive": "symmetric_block_cipher",
+        "role": "encryption_decryption",
+        "parameters": {
+          "key_size_bits": 56,
+          "cipher_mode": "CBC",
+          "padding_scheme": "PKCS5Padding",
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "broken_classically"
+      },
+      "evaluation_notes": "Scanners must find the direct DES cipher call inside LegacyCryptoHelper. Algorithm is DES with CBC mode and PKCS5Padding. Key size note: key_size_bits = 56 represents the effective cryptographic security strength of DES (derived from the 64-bit encoded key which includes 8 parity bits)."
+    },
+    {
+      "finding_id": "TC08-F02",
+      "observed_fact": {
+        "file": "DataEncryptor.java",
+        "line_start": 15,
+        "line_end": 15,
+        "code_snippet": "return LegacyCryptoHelper.performLegacyEncryption(customerData, keyBytes, ivBytes);",
+        "raw_statement": "LegacyCryptoHelper.performLegacyEncryption(...)"
+      },
+      "expected_interpretation": {
+        "algorithm": "DES",
+        "variant": "DES-CBC",
+        "cryptographic_primitive": "symmetric_block_cipher",
+        "role": "encryption_decryption",
+        "parameters": {
+          "key_size_bits": 56,
+          "cipher_mode": "CBC",
+          "padding_scheme": "PKCS5Padding",
+          "curve_name": null
+        },
+        "usage_type": "indirect",
+        "expected_confidence": "LIKELY",
+        "quantum_vulnerability_class": "broken_classically"
+      },
+      "evaluation_notes": "Advanced scanners capable of inter-procedural call-graph analysis should link DataEncryptor to the underlying DES encryption. Basic AST scanners may only detect TC08-F01, which is acceptable for baseline scoring. Key size note: key_size_bits = 56 represents the effective cryptographic security strength of DES (derived from the 64-bit encoded key which includes 8 parity bits)."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & Call Graph Tracing"
+  }
+}

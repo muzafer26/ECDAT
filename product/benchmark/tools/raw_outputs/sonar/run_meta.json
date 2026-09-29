@@ -1,0 +1,6 @@
+{
+  "tool": "sonar-cryptography-plugin",
+  "version": "1.6.1",
+  "status": "BLOCKED",
+  "reason": "Requires SonarQube Server or SonarScanner CLI runner which is not installed on host"
+}

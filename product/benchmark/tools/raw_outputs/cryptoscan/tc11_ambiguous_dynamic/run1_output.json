@@ -1,0 +1,50 @@
+{
+  "tool": {
+    "name": "CryptoScan",
+    "version": "1.4.0"
+  },
+  "findings": [],
+  "summary": {
+    "totalFindings": 0,
+    "bySeverity": {},
+    "byCategory": {},
+    "byQuantumRisk": {},
+    "byConfidence": {},
+    "byFileType": {},
+    "byLanguage": {},
+    "quantumVulnerableCount": 0,
+    "highConfidenceCount": 0,
+    "actionableCount": 0,
+    "narrativeSuppressedCount": 0
+  },
+  "migrationScore": {
+    "score": 0,
+    "level": "CRITICAL",
+    "safeCount": 0,
+    "hybridCount": 0,
+    "partialCount": 0,
+    "vulnerableCount": 0,
+    "criticalCount": 0,
+    "totalCount": 0,
+    "qrammReadiness": {
+      "cviScore": 0,
+      "discoveryLevel": 1,
+      "assessmentLevel": 1,
+      "mappingLevel": 1,
+      "recommendations": [
+        "No cryptographic assets discovered. Run scan on additional directories.",
+        "Consider scanning dependencies (package.json, go.mod, requirements.txt)."
+      ]
+    }
+  },
+  "insights": null,
+  "scanTarget": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc11_ambiguous_dynamic",
+  "scanTime": "2026-09-13T20:29:37.7713302+05:30",
+  "scanDuration": 8573900,
+  "filesScanned": 1,
+  "linesScanned": 30,
+  "bytesScanned": 1291,
+  "languageStats": {
+    "java": 1
+  }
+}

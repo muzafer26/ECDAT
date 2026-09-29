@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-09",
+  "title": "Dependency Manifest Crypto Presence Without Code Invocations",
+  "description": "Tests whether discovery tools correctly distinguish declared package dependencies from actual source code invocations.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC09-F01",
+      "observed_fact": {
+        "file": "pom.xml",
+        "line_start": 22,
+        "line_end": 26,
+        "code_snippet": "<dependency>\n    <groupId>org.bouncycastle</groupId>\n    <artifactId>bcprov-jdk18on</artifactId>\n    <version>1.78.1</version>\n</dependency>",
+        "raw_statement": "dependency:org.bouncycastle:bcprov-jdk18on:1.78.1"
+      },
+      "expected_interpretation": {
+        "algorithm": "UNKNOWN",
+        "variant": "org.bouncycastle:bcprov-jdk18on:1.78.1",
+        "cryptographic_primitive": "dependency_package",
+        "role": "unknown",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "dependency",
+        "expected_confidence": "LIKELY",
+        "quantum_vulnerability_class": "unknown"
+      },
+      "evaluation_notes": "Bouncy Castle is a provider/library package, NOT a cryptographic algorithm. Component coordinates org.bouncycastle:bcprov-jdk18on:1.78.1 are declared as dependency evidence in pom.xml. Algorithm usage is UNKNOWN / NOT_OBSERVED because DirectService.java contains zero cryptographic invocations. Operational role is unknown. Tools must not infer active algorithm usage (e.g. RSA, AES) merely from dependency manifest presence."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Manifest Audit & Source Code Absence Verification"
+  }
+}

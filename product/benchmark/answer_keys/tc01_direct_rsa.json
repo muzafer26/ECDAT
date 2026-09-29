@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-01",
+  "title": "Direct RSA Key Pair Generation",
+  "description": "Tests direct JCA KeyPairGenerator instantiation with algorithm RSA and 2048-bit key size.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC01-F01",
+      "observed_fact": {
+        "file": "DirectRSAKeyGen.java",
+        "line_start": 16,
+        "line_end": 19,
+        "code_snippet": "KeyPairGenerator keyGen = KeyPairGenerator.getInstance(\"RSA\");\nkeyGen.initialize(2048);",
+        "raw_statement": "KeyPairGenerator.getInstance(\"RSA\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "RSA",
+        "variant": null,
+        "cryptographic_primitive": "asymmetric_key_pair",
+        "role": "unknown",
+        "parameters": {
+          "key_size_bits": 2048,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "shor_vulnerable"
+      },
+      "evaluation_notes": "Scanners must extract RSA and 2048-bit key length. Operational role must be UNKNOWN as KeyPairGenerator does not specify whether keys are used for encryption, signature, or key exchange."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

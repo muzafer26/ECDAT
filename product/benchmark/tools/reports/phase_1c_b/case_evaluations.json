@@ -1,0 +1,212 @@
+{
+  "TC-01": {
+    "test_case_id": "TC-01",
+    "title": "Direct RSA Key Pair Generation",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 1,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 0,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "RSA-001-16-64"
+      ],
+      "unmatched": []
+    },
+    "analysis": "Successfully detected expected asset RSA with 0 extraneous/spurious finding(s)."
+  },
+  "TC-02": {
+    "test_case_id": "TC-02",
+    "title": "Symmetric AES-GCM Authenticated Encryption",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 2,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 0,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "AES-001-21-53",
+        "AES-001-16-50"
+      ],
+      "unmatched": []
+    },
+    "analysis": "Successfully detected expected asset AES with 0 extraneous/spurious finding(s)."
+  },
+  "TC-03": {
+    "test_case_id": "TC-03",
+    "title": "Generic Elliptic Curve (ECC) Key Pair Generation",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 1,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 0,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "ECC-001-22-60"
+      ],
+      "unmatched": []
+    },
+    "analysis": "Successfully detected expected asset EC with 0 extraneous/spurious finding(s)."
+  },
+  "TC-04": {
+    "test_case_id": "TC-04",
+    "title": "Explicit ECDSA Digital Signature Generation",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 2,
+    "classification": "FALSE_NEGATIVE",
+    "tp_count": 0,
+    "fp_count": 2,
+    "fn_count": 1,
+    "details": {
+      "matched": [],
+      "unmatched": [
+        "CERT-SIGALG-001-15-32: Unmatched or duplicate finding",
+        "CERT-SIGALG-001-19-52: Unmatched or duplicate finding"
+      ]
+    },
+    "analysis": "Missed expected asset ECDSA."
+  },
+  "TC-05": {
+    "test_case_id": "TC-05",
+    "title": "Explicit ECDH Key Agreement",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 8,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 7,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "ECC-001-16-55"
+      ],
+      "unmatched": [
+        "DH-001-9-34: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-3-20: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-14-17: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-20-8: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-23-8: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-26-8: Unmatched or duplicate finding",
+        "CERT-KEYUSAGE-001-29-15: Unmatched or duplicate finding"
+      ]
+    },
+    "analysis": "Successfully detected expected asset ECDH with 7 extraneous/spurious finding(s)."
+  },
+  "TC-06": {
+    "test_case_id": "TC-06",
+    "title": "Modern Ed25519 Edwards-Curve Digital Signature",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 1,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 0,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "ECC-001-15-45"
+      ],
+      "unmatched": []
+    },
+    "analysis": "Successfully detected expected asset ED25519 with 0 extraneous/spurious finding(s)."
+  },
+  "TC-07": {
+    "test_case_id": "TC-07",
+    "title": "Legacy Cryptographic Hash Function (SHA-1)",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 3,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 2,
+    "fn_count": 0,
+    "details": {
+      "matched": [
+        "SHA1-001-11-13"
+      ],
+      "unmatched": [
+        "SHA1-001-2-43: Comment/docstring match at line 2 instead of code AST",
+        "SHA1-001-3-58: Comment/docstring match at line 3 instead of code AST"
+      ]
+    },
+    "analysis": "Successfully detected expected asset SHA-1 with 2 extraneous/spurious finding(s)."
+  },
+  "TC-08": {
+    "test_case_id": "TC-08",
+    "title": "Cryptographic Call Behind Internal Helper / Wrapper",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 2,
+    "tool_findings_count": 0,
+    "classification": "FALSE_NEGATIVE",
+    "tp_count": 0,
+    "fp_count": 0,
+    "fn_count": 1,
+    "details": [],
+    "analysis": "Failed to detect DES algorithm inside internal crypto wrapper class (LegacyCryptoHelper.java). Zero findings emitted."
+  },
+  "TC-09": {
+    "test_case_id": "TC-09",
+    "title": "Dependency Manifest Crypto Presence Without Code Invocations",
+    "negative_case": false,
+    "ambiguous_case": false,
+    "expected_findings_count": 1,
+    "tool_findings_count": 1,
+    "classification": "TRUE_POSITIVE",
+    "tp_count": 1,
+    "fp_count": 0,
+    "fn_count": 0,
+    "details": [],
+    "analysis": "Detected Bouncy Castle dependency in pom.xml as category 'dependency'. Correctly did not invent code invocations."
+  },
+  "TC-10": {
+    "test_case_id": "TC-10",
+    "title": "Misleading Comments, Decoy Variables & String Literals (NEGATIVE CASE)",
+    "negative_case": true,
+    "ambiguous_case": false,
+    "expected_findings_count": 0,
+    "tool_findings_count": 1,
+    "classification": "FALSE_POSITIVE",
+    "tp_count": 0,
+    "fp_count": 1,
+    "fn_count": 0,
+    "details": [
+      {
+        "id": "RSA-001-26-34",
+        "match": "RSA",
+        "line": 26,
+        "context": "logger.info(\"Initializing RSA secure handshake simulation for test harness...\");",
+        "verdict": "FALSE_POSITIVE_IF_DETECTED"
+      }
+    ],
+    "analysis": "Failed negative test case. Tool flagged 1 finding(s) on decoy comments/logger strings."
+  },
+  "TC-11": {
+    "test_case_id": "TC-11",
+    "title": "Ambiguous & Dynamic Runtime Cryptographic Invocation",
+    "negative_case": false,
+    "ambiguous_case": true,
+    "expected_findings_count": 1,
+    "tool_findings_count": 0,
+    "classification": "FALSE_NEGATIVE",
+    "tp_count": 0,
+    "fp_count": 0,
+    "fn_count": 1,
+    "details": [],
+    "analysis": "Failed to detect dynamic Cipher invocation. The tool requires a static string literal and does not identify unresolved dynamic variables or mark uncertainty."
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-10",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc10_misleading_comments/run1_output.json",
+    "finding_reference": "RSA-001-26-34",
+    "finding_index": 0,
+    "detected_asset": "RSA",
+    "detected_primitive": "pke",
+    "category": "Asymmetric Encryption",
+    "location": {
+      "file": "NonCryptoProcessor.java",
+      "line_start": 26,
+      "line_end": 26,
+      "column": 35
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "logger.info(\"Initializing RSA secure handshake simulation for test harness...\");"
+  }
+]

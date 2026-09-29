@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-04",
+  "title": "Explicit ECDSA Digital Signature Generation",
+  "description": "Tests explicit JCA Signature instantiation with SHA256withECDSA algorithm.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC04-F01",
+      "observed_fact": {
+        "file": "EcdsaSignature.java",
+        "line_start": 19,
+        "line_end": 22,
+        "code_snippet": "Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);\nsignature.initSign(privateKey);",
+        "raw_statement": "Signature.getInstance(\"SHA256withECDSA\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "ECDSA",
+        "variant": "SHA256withECDSA",
+        "cryptographic_primitive": "digital_signature",
+        "role": "digital_signature",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "shor_vulnerable"
+      },
+      "evaluation_notes": "Scanners must extract ECDSA algorithm with associated digest SHA-256 (from SHA256withECDSA). Schema limitation: answer_key.schema.json does not define a separate digest_algorithm parameter field, so SHA-256 is explicitly represented in variant 'SHA256withECDSA' and documented in evaluation notes. Operational role is determinable as digital_signature based on Signature API usage."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "tool": {
+    "name": "CryptoScan",
+    "version": "1.4.0"
+  },
+  "findings": [
+    {
+      "id": "ECC-001-22-60",
+      "type": "Elliptic Curve Cryptography",
+      "findingType": "algorithm",
+      "category": "Asymmetric Encryption",
+      "algorithm": "ECC",
+      "primitive": "pke",
+      "migrationStatus": "VULNERABLE",
+      "qrammMapping": {
+        "dimension": "CVI",
+        "practice": "1.2",
+        "evidence": "Quantum vulnerability assessment and classification"
+      },
+      "file": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc03_ecc_generic\\EccKeyGen.java",
+      "line": 22,
+      "column": 61,
+      "match": "secp256r1",
+      "context": "ECGenParameterSpec ecSpec = new ECGenParameterSpec(\"secp256r1\");",
+      "sourceContext": {
+        "lines": [
+          {
+            "number": 19,
+            "content": "        KeyPairGenerator keyGen = KeyPairGenerator.getInstance(\"EC\");",
+            "isMatch": false
+          },
+          {
+            "number": 20,
+            "content": "        ",
+            "isMatch": false
+          },
+          {
+            "number": 21,
+            "content": "        // Line 21: Named curve parameter specification \"secp256r1\" (NIST P-256)",
+            "isMatch": false
+          },
+          {
+            "number": 22,
+            "content": "        ECGenParameterSpec ecSpec = new ECGenParameterSpec(\"secp256r1\");",
+            "isMatch": true
+          },
+          {
+            "number": 23,
+            "content": "        keyGen.initialize(ecSpec);",
+            "isMatch": false
+          },
+          {
+            "number": 24,
+            "content": "        ",
+            "isMatch": false
+          },
+          {
+            "number": 25,
+            "content": "        // Line 25: Key pair generation",
+            "isMatch": false
+          }
+        ],
+        "startLine": 19,
+        "endLine": 25,
+        "matchLine": 22
+      },
+      "severity": 3,
+      "quantumRisk": "VULNERABLE",
+      "confidence": "MEDIUM",
+      "purpose": "general",
+      "language": "java",
+      "fileType": "code",
+      "description": "Elliptic curve cryptography detected. ECC is vulnerable to Shor's algorithm on quantum computers.",
+      "remediation": "Migrate to ML-DSA (FIPS 204) for signatures or ML-KEM (FIPS 203) for key exchange.",
+      "impact": "Long-term data confidentiality at risk from quantum computing advances",
+      "effort": "Algorithm replacement - high effort, requires PKI changes",
+      "references": [
+        "https://csrc.nist.gov/pubs/fips/204/final"
+      ],
+      "tags": [
+        "asymmetric",
+        "quantum-vulnerable",
+        "digital-signature"
+      ]
+    }
+  ],
+  "summary": {
+    "totalFindings": 1,
+    "bySeverity": {
+      "HIGH": 1
+    },
+    "byCategory": {
+      "Asymmetric Encryption": 1
+    },
+    "byQuantumRisk": {
+      "VULNERABLE": 1
+    },
+    "byConfidence": {
+      "MEDIUM": 1
+    },
+    "byFileType": {
+      "code": 1
+    },
+    "byLanguage": {
+      "java": 1
+    },
+    "quantumVulnerableCount": 1,
+    "highConfidenceCount": 0,
+    "actionableCount": 0,
+    "narrativeSuppressedCount": 2
+  },
+  "migrationScore": {
+    "score": 0,
+    "level": "CRITICAL",
+    "safeCount": 0,
+    "hybridCount": 0,
+    "partialCount": 0,
+    "vulnerableCount": 1,
+    "criticalCount": 0,
+    "totalCount": 1,
+    "byPrimitive": {
+      "pke": 1
+    },
+    "byAlgorithm": {
+      "ECC": 1
+    },
+    "topRiskFiles": [
+      {
+        "file": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc03_ecc_generic\\EccKeyGen.java",
+        "vulnerableCount": 1,
+        "criticalCount": 0,
+        "totalFindings": 1,
+        "riskScore": 10
+      }
+    ],
+    "qrammReadiness": {
+      "cviScore": 40,
+      "discoveryLevel": 3,
+      "assessmentLevel": 3,
+      "mappingLevel": 2,
+      "recommendations": [
+        "Plan migration from quantum-vulnerable algorithms to PQC (ML-KEM, ML-DSA).",
+        "Consider hybrid cryptography as a transition strategy.",
+        "No quantum-safe algorithms detected. Begin PQC adoption planning."
+      ]
+    }
+  },
+  "insights": [
+    {
+      "type": "migration_required",
+      "title": "ECC/ECDSA Migration Required (1 instances)",
+      "description": "Elliptic curve cryptography is quantum-vulnerable. Signatures must migrate to ML-DSA (FIPS 204) or SLH-DSA (FIPS 205).",
+      "priority": "high",
+      "effort": "medium",
+      "findingIds": [
+        "ECC-001-22-60"
+      ],
+      "action": "1. Identify ECC usage (signatures vs key exchange)\n2. For signatures: migrate to ML-DSA\n3. For key exchange: migrate to ML-KEM"
+    }
+  ],
+  "scanTarget": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc03_ecc_generic",
+  "scanTime": "2026-09-13T20:29:36.4481731+05:30",
+  "scanDuration": 11686100,
+  "filesScanned": 1,
+  "linesScanned": 28,
+  "bytesScanned": 1167,
+  "languageStats": {
+    "java": 1
+  }
+}

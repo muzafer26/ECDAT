@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-07",
+  "title": "Legacy Cryptographic Hash Function (SHA-1)",
+  "description": "Tests Python hashlib instantiation with SHA-1 algorithm.",
+  "language": "Python",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC07-F01",
+      "observed_fact": {
+        "file": "sha1_hash.py",
+        "line_start": 11,
+        "line_end": 14,
+        "code_snippet": "hasher = hashlib.sha1()\nhasher.update(data)",
+        "raw_statement": "hashlib.sha1()"
+      },
+      "expected_interpretation": {
+        "algorithm": "SHA-1",
+        "variant": null,
+        "cryptographic_primitive": "message_digest",
+        "role": "message_digest",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": null,
+          "padding_scheme": null,
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "broken_classically"
+      },
+      "evaluation_notes": "Scanners must extract SHA-1 algorithm. Operational role is determinable as message_digest based on hashlib usage. SHA-1 produces a 160-bit message digest output; key_size_bits is null because hash functions do not utilize cryptographic keys. Schema limitation: answer_key.schema.json does not define a digest_size_bits parameter field, so digest size is documented here."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & Python Standard Library Cross-Check"
+  }
+}

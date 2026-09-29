@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecdat.security/schemas/answer_key.schema.json",
+  "title": "ECDAT Benchmark Answer Key Schema",
+  "description": "Formal schema for human-verified ground-truth answer keys in the ECDAT benchmark corpus.",
+  "type": "object",
+  "required": [
+    "test_case_id",
+    "title",
+    "language",
+    "negative_case",
+    "ambiguous_case",
+    "expected_findings",
+    "verification_metadata"
+  ],
+  "properties": {
+    "test_case_id": {
+      "type": "string",
+      "pattern": "^TC-[0-9]{2}$",
+      "description": "Canonical identifier (e.g., TC-01)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short human-readable test case name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Purpose and discovery rationale for the test case"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["Java", "Python", "Go", "C", "C++", "Rust", "Multi-Language", "Config"],
+      "description": "Primary programming or configuration language"
+    },
+    "negative_case": {
+      "type": "boolean",
+      "description": "True if the test case is an intentional decoy/negative test containing zero genuine cryptographic assets"
+    },
+    "ambiguous_case": {
+      "type": "boolean",
+      "description": "True if the test case tests uncertainty/dynamic resolution where algorithm or parameters cannot be statically proven"
+    },
+    "expected_findings": {
+      "type": "array",
+      "description": "List of expected cryptographic findings (empty if negative_case is true and no assets exist)",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id",
+          "observed_fact",
+          "expected_interpretation"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "description": "Unique identifier for the expected finding within this test case"
+          },
+          "observed_fact": {
+            "type": "object",
+            "description": "Empirical ground truth as it exists in the source code without interpretation",
+            "required": [
+              "file",
+              "line_start",
+              "line_end",
+              "code_snippet",
+              "raw_statement"
+            ],
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "Target relative file path from test case root"
+              },
+              "line_start": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "line_end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "code_snippet": {
+                "type": "string",
+                "description": "Exact sanitized code excerpt (bounded to <= 5 lines)"
+              },
+              "raw_statement": {
+                "type": "string",
+                "description": "Primary API invocation or syntax statement"
+              }
+            }
+          },
+          "expected_interpretation": {
+            "type": "object",
+            "description": "Human-reviewed benchmark ground truth / expected result derived from source evidence",
+            "required": [
+              "algorithm",
+              "cryptographic_primitive",
+              "role",
+              "usage_type",
+              "expected_confidence"
+            ],
+            "properties": {
+              "algorithm": {
+                "type": "string",
+                "description": "Canonical algorithm name (e.g. RSA, AES, ECDSA, SHA-1, or UNKNOWN)"
+              },
+              "variant": {
+                "type": "string",
+                "description": "Algorithm variant or null if not determinable"
+              },
+              "cryptographic_primitive": {
+                "type": "string",
+                "enum": [
+                  "asymmetric_key_pair",
+                  "symmetric_block_cipher",
+                  "digital_signature",
+                  "key_agreement",
+                  "message_digest",
+                  "mac",
+                  "kdf",
+                  "dependency_package",
+                  "unknown_primitive"
+                ]
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "key_establishment",
+                  "digital_signature",
+                  "encryption_decryption",
+                  "message_digest",
+                  "password_hashing",
+                  "unknown",
+                  "none_decoy"
+                ],
+                "description": "Operational cryptographic role. Only assigned when the source code genuinely establishes it."
+              },
+              "parameters": {
+                "type": "object",
+                "description": "Extracted parameter attributes (key_size_bits, mode, padding, curve)",
+                "properties": {
+                  "key_size_bits": { "type": ["integer", "null"] },
+                  "cipher_mode": { "type": ["string", "null"] },
+                  "padding_scheme": { "type": ["string", "null"] },
+                  "curve_name": { "type": ["string", "null"] }
+                }
+              },
+              "usage_type": {
+                "type": "string",
+                "enum": [
+                  "direct",
+                  "indirect",
+                  "dependency",
+                  "configuration",
+                  "ambiguous",
+                  "negative_decoy"
+                ]
+              },
+              "expected_confidence": {
+                "type": "string",
+                "enum": [
+                  "CONFIRMED",
+                  "LIKELY",
+                  "POSSIBLE",
+                  "NEEDS_REVIEW",
+                  "FALSE_POSITIVE_IF_DETECTED"
+                ]
+              },
+              "quantum_vulnerability_class": {
+                "type": "string",
+                "enum": [
+                  "shor_vulnerable",
+                  "grover_reduced",
+                  "grover_resilient_conditional",
+                  "broken_classically",
+                  "not_applicable",
+                  "unknown"
+                ]
+              }
+            }
+          },
+          "evaluation_notes": {
+            "type": "string",
+            "description": "Guidance for benchmark evaluators on what constitutes a pass, fail, or partial hit"
+          }
+        }
+      }
+    },
+    "verification_metadata": {
+      "type": "object",
+      "required": ["verifier", "verification_date", "verification_method"],
+      "properties": {
+        "verifier": { "type": "string" },
+        "verification_date": { "type": "string", "format": "date" },
+        "verification_method": { "type": "string" }
+      }
+    }
+  }
+}

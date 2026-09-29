@@ -1,0 +1,7 @@
+{
+  "exit_code_match": true,
+  "findings_identical": true,
+  "run1_finding_count": 8,
+  "run2_finding_count": 8,
+  "duration_delta_sec": 0.019405900000037946
+}

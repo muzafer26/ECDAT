@@ -1,0 +1,115 @@
+{
+  "execution_date": "2026-09-13T14:59:44.779095+00:00",
+  "phase": "Phase 1C-B (Controlled Benchmark Execution & Evaluation)",
+  "tools_executed": [
+    "CryptoScan v1.4.0",
+    "Syft v1.51.1"
+  ],
+  "tools_blocked_or_failed": [
+    "pqaudit v0.5.0 (EXECUTION_FAILURE)",
+    "sonar-cryptography-plugin v1.6.1 (BLOCKED)"
+  ],
+  "tools_out_of_scope": [
+    "sslscan 2.2.2 (NOT_EVALUATED / Network Layer)"
+  ],
+  "metrics_summary": {
+    "tool": "CryptoScan v1.4.0",
+    "total_cases_evaluated": 11,
+    "true_positives": 7,
+    "false_positives": 12,
+    "false_negatives": 3,
+    "precision": 0.3684,
+    "recall": 0.7,
+    "f1_score": 0.4828,
+    "case_coverage_percent": 100.0,
+    "notes": "Calculated across Phase 1B Seed Corpus (TC-01..TC-11). TC-10 FP counted in false_positives."
+  },
+  "reproducibility": {
+    "cryptoscan": {
+      "TC-01": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 1,
+        "run2_finding_count": 1,
+        "duration_delta_sec": 0.0016404000002694374
+      },
+      "TC-02": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 2,
+        "run2_finding_count": 2,
+        "duration_delta_sec": 0.00041920000012396486
+      },
+      "TC-03": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 1,
+        "run2_finding_count": 1,
+        "duration_delta_sec": 0.024098699999740347
+      },
+      "TC-04": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 2,
+        "run2_finding_count": 2,
+        "duration_delta_sec": 0.01138489999993908
+      },
+      "TC-05": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 8,
+        "run2_finding_count": 8,
+        "duration_delta_sec": 0.019405900000037946
+      },
+      "TC-06": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 1,
+        "run2_finding_count": 1,
+        "duration_delta_sec": 0.04218600000012884
+      },
+      "TC-07": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 3,
+        "run2_finding_count": 3,
+        "duration_delta_sec": 0.02858390000028521
+      },
+      "TC-08": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 0,
+        "run2_finding_count": 0,
+        "duration_delta_sec": 0.004161299999850598
+      },
+      "TC-09": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 1,
+        "run2_finding_count": 1,
+        "duration_delta_sec": 0.0007107999999789172
+      },
+      "TC-10": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 1,
+        "run2_finding_count": 1,
+        "duration_delta_sec": 0.060437199999796576
+      },
+      "TC-11": {
+        "exit_code_match": true,
+        "findings_identical": true,
+        "run1_finding_count": 0,
+        "run2_finding_count": 0,
+        "duration_delta_sec": 0.026661500000045635
+      }
+    },
+    "syft": {
+      "exit_code_match": true,
+      "packages_identical": true,
+      "run1_package_count": 2,
+      "run2_package_count": 2,
+      "duration_delta_sec": 0.17587259999982052
+    }
+  }
+}

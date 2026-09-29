@@ -1,0 +1,6 @@
+{
+  "tool": "sslscan",
+  "version": "2.2.2",
+  "status": "NOT_EVALUATED",
+  "reason": "Network-layer TLS socket scanner; out of scope for static source code corpus; internet scanning prohibited"
+}

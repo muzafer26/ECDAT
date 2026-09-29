@@ -1,0 +1,29 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-03",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc03_ecc_generic/run1_output.json",
+    "finding_reference": "ECC-001-22-60",
+    "finding_index": 0,
+    "detected_asset": "ECC",
+    "detected_primitive": "pke",
+    "category": "Asymmetric Encryption",
+    "location": {
+      "file": "EccKeyGen.java",
+      "line_start": 22,
+      "line_end": 22,
+      "column": 61
+    },
+    "role": "general",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "ECGenParameterSpec ecSpec = new ECGenParameterSpec(\"secp256r1\");"
+  }
+]

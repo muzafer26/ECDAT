@@ -1,0 +1,7 @@
+{
+  "exit_code_match": true,
+  "packages_identical": true,
+  "run1_package_count": 2,
+  "run2_package_count": 2,
+  "duration_delta_sec": 0.17587259999982052
+}

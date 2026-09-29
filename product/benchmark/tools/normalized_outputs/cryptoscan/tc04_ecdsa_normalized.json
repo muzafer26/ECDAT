@@ -1,0 +1,56 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-04",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc04_ecdsa/run1_output.json",
+    "finding_reference": "CERT-SIGALG-001-15-32",
+    "finding_index": 0,
+    "detected_asset": "Certificate Signature Algorithm",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdsaSignature.java",
+      "line_start": 15,
+      "line_end": 15,
+      "column": 33
+    },
+    "role": "signing",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "private static final String SIGNATURE_ALGORITHM = \"SHA256withECDSA\";"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-04",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc04_ecdsa/run1_output.json",
+    "finding_reference": "CERT-SIGALG-001-19-52",
+    "finding_index": 1,
+    "detected_asset": "Certificate Signature Algorithm",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdsaSignature.java",
+      "line_start": 19,
+      "line_end": 19,
+      "column": 53
+    },
+    "role": "signing",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);"
+  }
+]

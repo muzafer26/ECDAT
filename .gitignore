@@ -1,0 +1,41 @@
+# Exclude orbitdesign reference project
+demo/orbitdesign/
+orbitdesign/
+OrbitAvanya-main/
+
+# Exclude learning, kilo, and scratches
+learning/
+.kilo/
+scratch/
+
+# Exclude large compiled binaries and vendor tools
+*.exe
+*.dll
+*.dylib
+*.bin
+product/benchmark/tools/verified/
+
+# Python caches and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node / frontend build caches
+node_modules/
+dist/
+build/
+.npm
+
+# Temp files and logs
+*.log
+chrome_temp/
+chrome_temp*/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db

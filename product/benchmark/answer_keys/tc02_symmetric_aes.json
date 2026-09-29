@@ -1,0 +1,41 @@
+{
+  "test_case_id": "TC-02",
+  "title": "Symmetric AES-GCM Authenticated Encryption",
+  "description": "Tests direct JCA Cipher instantiation with AES in GCM mode without padding.",
+  "language": "Java",
+  "negative_case": false,
+  "ambiguous_case": false,
+  "expected_findings": [
+    {
+      "finding_id": "TC02-F01",
+      "observed_fact": {
+        "file": "AesGcmCipher.java",
+        "line_start": 21,
+        "line_end": 28,
+        "code_snippet": "SecretKey key = new SecretKeySpec(keyBytes, \"AES\");\nCipher cipher = Cipher.getInstance(TRANSFORMATION);\nGCMParameterSpec parameterSpec = new GCMParameterSpec(TAG_LENGTH_BITS, iv);\ncipher.init(Cipher.ENCRYPT_MODE, key, parameterSpec);",
+        "raw_statement": "Cipher.getInstance(\"AES/GCM/NoPadding\")"
+      },
+      "expected_interpretation": {
+        "algorithm": "AES",
+        "variant": "AES-GCM",
+        "cryptographic_primitive": "symmetric_block_cipher",
+        "role": "encryption_decryption",
+        "parameters": {
+          "key_size_bits": null,
+          "cipher_mode": "GCM",
+          "padding_scheme": "NoPadding",
+          "curve_name": null
+        },
+        "usage_type": "direct",
+        "expected_confidence": "CONFIRMED",
+        "quantum_vulnerability_class": "grover_reduced"
+      },
+      "evaluation_notes": "Scanners must extract AES algorithm, GCM mode, and NoPadding. Operational role is determinable as encryption_decryption based on Cipher API and ENCRYPT_MODE. GCM tag length note: The fixture specifies a 128-bit authentication tag (TAG_LENGTH_BITS = 128). Schema limitation: answer_key.schema.json does not define a tag_length_bits parameter property, so this parameter is documented here rather than modifying the schema casually."
+    }
+  ],
+  "verification_metadata": {
+    "verifier": "Human Project Engineer",
+    "verification_date": "2026-09-12",
+    "verification_method": "Manual Source Code Inspection & JCA Spec Cross-Check"
+  }
+}

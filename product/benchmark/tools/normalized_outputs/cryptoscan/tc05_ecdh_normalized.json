@@ -1,0 +1,218 @@
+[
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "ECC-001-16-55",
+    "finding_index": 0,
+    "detected_asset": "ECC",
+    "detected_primitive": "pke",
+    "category": "Asymmetric Encryption",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 16,
+      "line_end": 16,
+      "column": 56
+    },
+    "role": "general",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "private static final String AGREEMENT_ALGORITHM = \"ECDH\";"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "DH-001-9-34",
+    "finding_index": 1,
+    "detected_asset": "DH",
+    "detected_primitive": "key-exchange",
+    "category": "Key Exchange",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 9,
+      "line_end": 9,
+      "column": 35
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "LOW",
+    "quantum_risk": "VULNERABLE",
+    "raw_context": "* TC-05: Explicit Elliptic Curve Diffie-Hellman (ECDH) Key Agreement."
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-3-20",
+    "finding_index": 2,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 3,
+      "line_end": 3,
+      "column": 21
+    },
+    "role": "general",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "HIGH",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "import javax.crypto.KeyAgreement;"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-14-17",
+    "finding_index": 3,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 14,
+      "line_end": 14,
+      "column": 18
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "public class EcdhKeyAgreement {"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-20-8",
+    "finding_index": 4,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 20,
+      "line_end": 20,
+      "column": 9
+    },
+    "role": "general",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "KeyAgreement keyAgreement = KeyAgreement.getInstance(AGREEMENT_ALGORITHM);"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-23-8",
+    "finding_index": 5,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 23,
+      "line_end": 23,
+      "column": 9
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "keyAgreement.init(privateKey);"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-26-8",
+    "finding_index": 6,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 26,
+      "line_end": 26,
+      "column": 9
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "keyAgreement.doPhase(peerPublicKey, true);"
+  },
+  {
+    "tool": "CryptoScan",
+    "version": "1.4.0",
+    "test_case": "TC-05",
+    "raw_output_reference": "product/benchmark/tools/raw_outputs/cryptoscan/tc05_ecdh/run1_output.json",
+    "finding_reference": "CERT-KEYUSAGE-001-29-15",
+    "finding_index": 7,
+    "detected_asset": "Certificate Key Usage",
+    "detected_primitive": null,
+    "category": "Certificate",
+    "location": {
+      "file": "EcdhKeyAgreement.java",
+      "line_start": 29,
+      "line_end": 29,
+      "column": 16
+    },
+    "role": "key-exchange",
+    "parameters": {
+      "key_size_bits": null,
+      "cipher_mode": null,
+      "padding_scheme": null,
+      "curve_name": null
+    },
+    "confidence": "MEDIUM",
+    "quantum_risk": "UNKNOWN",
+    "raw_context": "return keyAgreement.generateSecret();"
+  }
+]

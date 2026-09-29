@@ -1,0 +1,17 @@
+{
+  "tool": "cryptoscan",
+  "version": "1.4.0",
+  "test_case": "TC-05",
+  "target": "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc05_ecdh",
+  "command": [
+    "D:\\SIH\\product\\benchmark\\tools\\verified\\cryptoscan\\cryptoscan.exe",
+    "scan",
+    "D:\\SIH\\product\\benchmark\\corpus\\seed\\tc05_ecdh",
+    "--format",
+    "json",
+    "--include-quantum-safe"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 0.07775209999999788,
+  "timestamp": "2026-09-13T14:59:36.740267+00:00"
+}
