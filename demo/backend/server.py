@@ -7,13 +7,17 @@ Usage:
 """
 
 import argparse
+import os
 from demo.backend.app import create_app
 
 
 def main() -> None:
+    default_host = os.environ.get("HOST", "127.0.0.1")
+    default_port = int(os.environ.get("PORT", "8080"))
+
     parser = argparse.ArgumentParser(description="ECDAT Demo Server")
-    parser.add_argument("--host", default="127.0.0.1", help="Host interface (default: 127.0.0.1)")
-    parser.add_argument("--port", type=int, default=8080, help="Port (default: 8080)")
+    parser.add_argument("--host", default=default_host, help=f"Host interface (default: {default_host})")
+    parser.add_argument("--port", type=int, default=default_port, help=f"Port (default: {default_port})")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode")
     args = parser.parse_args()
 
