@@ -20,8 +20,8 @@ class GradientWaves {
     }
 
     this.options = {
-      horizonColor: options.horizonColor || '#6b8a3c',
-      waveColor: options.waveColor || '#d2f83c',
+      horizonColor: options.horizonColor || '#2b5a2e',
+      waveColor: options.waveColor || '#dff56b',
       crestColor: options.crestColor || '#FFFFFF',
       speed: options.speed ?? 0.4,
       amplitude: options.amplitude ?? 2.5,
@@ -32,16 +32,17 @@ class GradientWaves {
       tilt: options.tilt ?? 1.11,
       zoom: options.zoom ?? 1,
       height: options.height ?? 5.5,
-      fogDepth: options.fogDepth ?? 16,
+      fogDepth: options.fogDepth ?? 22,
       detail: options.detail || 'medium',
-      brightness: options.brightness ?? 0.82,
-      opacity: options.opacity ?? 0.85,
+      brightness: options.brightness ?? 1.22,
+      opacity: options.opacity ?? 0.96,
       mouseInteraction: options.mouseInteraction === true,
       parallaxStrength: options.parallaxStrength ?? 0.5,
       grain: options.grain !== false,
-      grainIntensity: options.grainIntensity ?? 0.05,
+      grainIntensity: options.grainIntensity ?? 0.04,
     };
 
+    this._cachedRect = null;
     this._steps = this._getSteps(this.options.detail);
     this._rafId = 0;
     this._isVisible = true;
@@ -54,9 +55,10 @@ class GradientWaves {
   }
 
   _getSteps(detail) {
-    if (detail === 'low') return 40.0;
-    if (detail === 'high') return 110.0;
-    return 70.0; // medium
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024));
+    if (detail === 'low' || isMobile) return 40.0;
+    if (detail === 'high') return 80.0;
+    return 55.0; // Optimized medium: preserves rich wave crests while reducing shader arithmetic by 21%
   }
 
   _hexToRgb(hex) {
@@ -211,7 +213,7 @@ void main() {
   col *= uBrightness;
   col = clamp(col, 0.0, 1.0);
 
-  float alpha = clamp(t, 0.0, 1.0) * uOpacity;
+  float alpha = clamp(pow(t, 0.7) * 1.25, 0.0, 1.0) * uOpacity;
   if (uGrain > 0.5) {
     float g = hash21(gl_FragCoord.xy + mod(iTime, 64.0) * 11.0);
     alpha += (g - 0.5) * uGrainIntensity;
@@ -271,10 +273,13 @@ void main() {
     // Set static uniforms
     this._updateStaticUniforms();
 
-    // Resize handling
+    // Resize handling with clamped DPR (max 1.25 on desktop, 1.0 on mobile)
     this._handleResize = () => {
       const rect = this.container.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this._cachedRect = rect;
+      const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024));
+      const maxDpr = isMobile ? 1.0 : 1.25;
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       const w = Math.max(1, Math.floor(rect.width * dpr));
       const h = Math.max(1, Math.floor(rect.height * dpr));
 
@@ -291,12 +296,18 @@ void main() {
     this.resizeObserver.observe(this.container);
     this._handleResize();
 
-    // Mouse parallax tracking
-    if (this.options.mouseInteraction) {
+    // Mouse parallax tracking (avoid getBoundingClientRect layout thrashing on pointermove)
+    const isTouchOnly = typeof window !== 'undefined' && 'ontouchstart' in window && !window.matchMedia('(pointer: fine)').matches;
+    if (this.options.mouseInteraction && !isTouchOnly) {
       this._onPointerMove = (e) => {
-        const rect = this.canvas.getBoundingClientRect();
-        this._targetMouse[0] = (e.clientX - rect.left) / rect.width;
-        this._targetMouse[1] = 1.0 - (e.clientY - rect.top) / rect.height;
+        if (!this._cachedRect) {
+          this._cachedRect = this.canvas.getBoundingClientRect();
+        }
+        const rect = this._cachedRect;
+        if (rect && rect.width > 0 && rect.height > 0) {
+          this._targetMouse[0] = (e.clientX - rect.left) / rect.width;
+          this._targetMouse[1] = 1.0 - (e.clientY - rect.top) / rect.height;
+        }
       };
 
       this._onPointerLeave = () => {
@@ -304,7 +315,7 @@ void main() {
         this._targetMouse[1] = 0.5;
       };
 
-      // Listen on window/container for responsive mouse response
+      // Listen on window/container with passive flag
       window.addEventListener('pointermove', this._onPointerMove, { passive: true });
       this.container.addEventListener('pointerleave', this._onPointerLeave, { passive: true });
     }
@@ -312,7 +323,7 @@ void main() {
     // Visibility / Intersection observer to save GPU when off-screen
     this.intersectionObserver = new IntersectionObserver(([entry]) => {
       this._isVisible = entry.isIntersecting;
-      if (this._isVisible) {
+      if (this._isVisible && this._isDocVisible) {
         this._startAnimation();
       } else {
         this._stopAnimation();
@@ -329,6 +340,22 @@ void main() {
       }
     };
     document.addEventListener('visibilitychange', this._onVisibilityChange);
+
+    // Support prefers-reduced-motion: reduce
+    this._prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      this._reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this._onMotionChange = (e) => {
+        this._prefersReducedMotion = e.matches;
+        if (this._prefersReducedMotion) {
+          this._stopAnimation();
+          this._renderFrame(performance.now());
+        } else if (this._isVisible && this._isDocVisible) {
+          this._startAnimation();
+        }
+      };
+      this._reducedMotionQuery.addEventListener('change', this._onMotionChange);
+    }
 
     this._startAnimation();
   }
@@ -396,26 +423,33 @@ void main() {
     return prog;
   }
 
+  _renderFrame(now) {
+    const gl = this.gl;
+    if (!gl || !this.program) return;
+
+    const elapsed = (now - this._startTime) * 0.001;
+
+    // Smooth mouse lerp
+    this._mouse[0] += 0.05 * (this._targetMouse[0] - this._mouse[0]);
+    this._mouse[1] += 0.05 * (this._targetMouse[1] - this._mouse[1]);
+
+    gl.useProgram(this.program);
+    gl.uniform1f(this.uniforms.iTime, elapsed);
+    gl.uniform2f(this.uniforms.uMouse, this._mouse[0], this._mouse[1]);
+
+    gl.bindVertexArray(this.vao);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+
   _startAnimation() {
+    if (this._prefersReducedMotion) {
+      this._renderFrame(performance.now());
+      return;
+    }
     if (this._rafId !== 0) return;
 
     const render = (now) => {
-      const gl = this.gl;
-      if (!gl || !this.program) return;
-
-      const elapsed = (now - this._startTime) * 0.001;
-
-      // Smooth mouse lerp
-      this._mouse[0] += 0.05 * (this._targetMouse[0] - this._mouse[0]);
-      this._mouse[1] += 0.05 * (this._targetMouse[1] - this._mouse[1]);
-
-      gl.useProgram(this.program);
-      gl.uniform1f(this.uniforms.iTime, elapsed);
-      gl.uniform2f(this.uniforms.uMouse, this._mouse[0], this._mouse[1]);
-
-      gl.bindVertexArray(this.vao);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-
+      this._renderFrame(now);
       this._rafId = requestAnimationFrame(render);
     };
 
@@ -434,7 +468,11 @@ void main() {
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.intersectionObserver) this.intersectionObserver.disconnect();
     document.removeEventListener('visibilitychange', this._onVisibilityChange);
+    if (this._reducedMotionQuery && this._onMotionChange) {
+      this._reducedMotionQuery.removeEventListener('change', this._onMotionChange);
+    }
     if (this._onPointerMove) window.removeEventListener('pointermove', this._onPointerMove);
+    if (this._onPointerLeave) this.container.removeEventListener('pointerleave', this._onPointerLeave);
 
     if (this.gl) {
       const ext = this.gl.getExtension('WEBGL_lose_context');

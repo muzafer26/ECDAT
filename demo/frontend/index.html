@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ECDAT — Enterprise Cryptographic Discovery & Analysis Tool</title>
   <meta name="description" content="ECDAT discovers, analyzes, and helps migrate enterprise cryptography to post-quantum standards. Experience the guided demo.">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=19">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-shell" id="top">
@@ -18,7 +18,7 @@
     <header class="top-bar">
       <div class="top-bar-left">
         <a href="#top" class="logo-link" aria-label="ECDAT Home">
-          <img src="assets/logo.png" alt="ECDAT Shield" class="navbar-logo-icon">
+          <img src="assets/logo.png" alt="ECDAT Shield" class="navbar-logo-icon" width="36" height="36" loading="eager" decoding="async">
           <span class="logo-title">ECDAT</span>
           <span class="logo-divider"></span>
           <span class="logo-subtitle">Enterprise Cryptographic<br>Discovery &amp; Analysis Tool</span>
@@ -32,25 +32,20 @@
     </header>
 
     <!-- ================================================================= -->
-    <!-- SECTION 1: OVERVIEW (Exact Orbit Editorial Architecture)           -->
+    <!-- ================================================================= -->
+    <!-- SECTION 1: OVERVIEW                                               -->
     <!-- ================================================================= -->
     <section id="section-overview" class="page-section active">
-      <!-- 1. Hero Block (Orbit Hero Composition) -->
+      <!-- 1. Hero Block -->
       <div class="hero-block">
         <div id="hero-gradient-waves" class="hero-waves-wrapper"></div>
         <div class="hero-inner">
-          <div class="hero-eyebrow">
-            <span class="pulse-dot"></span>
-            <span>Ecosystem Active · Post-Quantum Cryptographic Intelligence</span>
-          </div>
           <h1 class="hero-headline">
             <span class="hero-headline-line line-1">Understand your cryptography</span>
             <span class="hero-headline-line line-2">before you migrate it.</span>
           </h1>
           <p class="hero-sub">
-            ECDAT brings cryptographic evidence from across your organization into one traceable view.
-            It shows what's being used, what's at risk, what's unknown, and how migration can be planned — 
-            all with auditable reasoning, not opaque scores.
+            ECDAT helps security and engineering teams discover where cryptography is used, understand what those findings mean, prioritize what needs attention, and plan migration — while keeping the evidence behind each decision traceable.
           </p>
           <div class="hero-cta-row">
             <button class="btn-primary-hero" id="btn-hero-try">
@@ -59,118 +54,194 @@
             </button>
             <button class="btn-secondary-hero" id="btn-hero-how">
               <span>Explore Architecture</span>
+              <span class="btn-arrow">↓</span>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- 2. The Challenge (Orbit BusinessComplexity Composition) -->
+      <!-- 2. The Challenge -->
       <div class="orbit-editorial-section complexity-section">
-        <span class="section-kicker">The Challenge</span>
+        <span class="section-kicker">THE CHALLENGE</span>
         <h2 class="editorial-headline">
           Complexity Slows Migration
         </h2>
         <p class="editorial-sub">
-          When cryptography is hidden, progress stops. Fragmentation across repositories, dependencies, CI/CD pipelines, containers, and network endpoints creates blind spots, unevidenced assumptions, and unquantified quantum risk.
+          When cryptographic usage is difficult to discover and understand, migration planning slows. Repositories, dependencies, CI/CD pipelines, containers, certificates, configurations, and network endpoints can contain different pieces of the cryptographic picture, creating blind spots, unsupported assumptions, and uncertainty about quantum exposure.
         </p>
         <div class="complexity-grid">
           <div class="complexity-card">
             <span class="comp-num">01</span>
             <h3 class="comp-title">Discovery Fragmentation</h3>
-            <p class="comp-desc">Heterogeneous security tools generate isolated, incompatible alert formats without a canonical cryptographic asset identity.</p>
+            <p class="comp-desc">Cryptography is spread across application code, certificates, libraries, protocols, infrastructure, and third-party systems. Different tools see different parts of it, leaving teams to piece the inventory together.</p>
           </div>
           <div class="complexity-card">
             <span class="comp-num">02</span>
-            <h3 class="comp-title">Context Silos</h3>
-            <p class="comp-desc">Scanner hits lack operational context: key lifecycle roles, data sensitivity, and network exposure remain unlinked from the code finding.</p>
+            <h3 class="comp-title">Context Gaps</h3>
+            <p class="comp-desc">Finding “RSA” or “ECDSA” is not enough. Teams still need to know where it is used, what it protects, which systems depend on it, and how difficult it will be to change.</p>
           </div>
           <div class="complexity-card">
             <span class="comp-num">03</span>
-            <h3 class="comp-title">Governance Disconnect</h3>
-            <p class="comp-desc">Automated tools hallucinate or assume missing parameters, risking premature migration before formal human verification.</p>
+            <h3 class="comp-title">Decision Uncertainty</h3>
+            <p class="comp-desc">A discovery result may be missing key size, protocol role, ownership, or operational context. ECDAT keeps those gaps visible instead of turning incomplete evidence into a confident conclusion.</p>
           </div>
         </div>
       </div>
 
-      <!-- 3. The Imperative (Orbit TransformationNeed Composition) -->
-      <div class="orbit-editorial-section imperative-section">
-        <span class="section-kicker">The Imperative</span>
-        <h2 class="editorial-headline-centered">The Quantum Divide</h2>
-        <div class="expanding-divider"></div>
-        <p class="editorial-thesis">
-          The enterprises that thrive are those that transform cryptographic discovery into verified evidence. Raw scanner hits become normalized assets. Missing parameters become explicit uncertainty. Ad-hoc replacements become NIST FIPS-approved PQC candidates.
+      <!-- 3. ECDAT Product Workflow -->
+      <div class="orbit-editorial-section workflow-section">
+        <span class="section-kicker">THE ECDAT APPROACH</span>
+        <h2 class="editorial-headline">From Finding to Decision</h2>
+        <p class="editorial-sub">
+          Cryptographic discovery is only the first step. Organizations need evidence, context, risk analysis, and prioritization to understand what they have and plan what changes next.
         </p>
         <p class="editorial-bridge">
-          The question isn't whether post-quantum cryptography is coming — it's whether your decision trail can withstand mathematical scrutiny.
+          ECDAT is designed to turn scattered cryptographic findings into information that a security or engineering team can actually act on.
         </p>
+        <div class="process-steps-grid">
+          <div class="process-step-card">
+            <span class="psc-num">01</span>
+            <span class="psc-name">DISCOVER</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">02</span>
+            <span class="psc-name">PRESERVE EVIDENCE</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">03</span>
+            <span class="psc-name">BUILD THE INVENTORY</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">04</span>
+            <span class="psc-name">UNDERSTAND CONTEXT</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">05</span>
+            <span class="psc-name">ASSESS RISK</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">06</span>
+            <span class="psc-name">IDENTIFY MIGRATION OPTIONS</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">07</span>
+            <span class="psc-name">PLAN THE CHANGE</span>
+          </div>
+          <div class="process-step-card">
+            <span class="psc-num">08</span>
+            <span class="psc-name">REVIEW THE DECISION</span>
+          </div>
+        </div>
+        <div class="process-footer">
+          Make the evidence, reasoning, and migration decision traceable.
+        </div>
       </div>
 
-      <!-- 4. Proven Authority Metrics (Orbit TrustBar Composition) -->
-      <div class="orbit-editorial-section trust-section">
-        <span class="section-kicker">Proven Foundation</span>
-        <div class="trust-metrics-grid">
-          <div class="trust-metric-col">
-            <div class="trust-val">100%</div>
-            <div class="trust-lbl">Deterministic Reasoning</div>
+      <!-- 4. What ECDAT Adds -->
+      <div class="orbit-editorial-section adds-section">
+        <span class="section-kicker">EVIDENCE TO ACTION</span>
+        <h2 class="editorial-headline">Turn Findings Into Decisions</h2>
+        <p class="editorial-sub">
+          ECDAT connects discovery observations to evidence, context, risk, migration candidates, dependencies, and human review.
+        </p>
+        <div class="adds-grid">
+          <div class="add-card">
+            <h3 class="add-title">Evidence &amp; Provenance</h3>
+            <p class="add-desc">Preserve the underlying evidence so analysts can trace how each conclusion was derived.</p>
           </div>
-          <div class="trust-metric-col">
-            <div class="trust-val highlight">0</div>
-            <div class="trust-lbl">Synthetic Verdicts</div>
+          <div class="add-card">
+            <h3 class="add-title">Cryptographic Inventory</h3>
+            <p class="add-desc">Normalize observations into cryptographic assets with their available attributes, relationships, and uncertainty.</p>
           </div>
-          <div class="trust-metric-col">
-            <div class="trust-val">FIPS</div>
-            <div class="trust-lbl">203 / 204 / 205 Targets</div>
+          <div class="add-card">
+            <h3 class="add-title">Risk &amp; Prioritization</h3>
+            <p class="add-desc">Separate risk from priority and make the reasoning behind each assessment reviewable.</p>
           </div>
-          <div class="trust-metric-col">
-            <div class="trust-val">PQC</div>
-            <div class="trust-lbl">Role-Aware Mapping</div>
+          <div class="add-card">
+            <h3 class="add-title">Role-Aware PQC Mapping</h3>
+            <p class="add-desc">Map applicable public-key cryptographic roles to candidate NIST-standardized post-quantum algorithms.</p>
+          </div>
+          <div class="add-card">
+            <h3 class="add-title">Migration Dependencies</h3>
+            <p class="add-desc">Identify dependency relationships and review gates that can affect migration order.</p>
+          </div>
+          <div class="add-card">
+            <h3 class="add-title">Human Review</h3>
+            <p class="add-desc">Keep uncertain or context-dependent decisions visible for analyst and organizational review.</p>
           </div>
         </div>
       </div>
 
-      <!-- 5. Scope & Foundation Cards -->
-      <div class="today-future-section">
-        <div class="today-card">
-          <span class="tf-badge tf-today">Today: Verified Foundation (Phases 0–4)</span>
-          <p>Multi-tool discovery ingestion, evidence normalization, canonical inventory synthesis, 
-          deterministic risk reasoning, role-aware PQC mapping, dependency scheduling, and blocking 
-          human review gates — all running in this prototype.</p>
+      <!-- 8. Current Product Foundation -->
+      <div class="orbit-editorial-section foundation-section">
+        <span class="section-kicker">CURRENT FOUNDATION</span>
+        <h2 class="editorial-headline">Evidence-Backed Analytical Foundation</h2>
+        <p class="editorial-sub">
+          The current ECDAT foundation provides evidence normalization, cryptographic asset inventory, deterministic rule-based analysis, role-aware PQC mapping, dependency-aware migration planning, and human review gates.
+        </p>
+        <div class="foundation-grid">
+          <div class="foundation-card">
+            <span class="foundation-dot">✓</span>
+            <span>Evidence-Backed Analysis</span>
+          </div>
+          <div class="foundation-card">
+            <span class="foundation-dot">✓</span>
+            <span>Deterministic Rule-Based Reasoning</span>
+          </div>
+          <div class="foundation-card">
+            <span class="foundation-dot">✓</span>
+            <span>NIST PQC Mapping</span>
+          </div>
+          <div class="foundation-card">
+            <span class="foundation-dot">✓</span>
+            <span>Role-Aware PQC Mapping</span>
+          </div>
         </div>
-        <div class="future-card">
-          <span class="tf-badge tf-future">Roadmap: Planned Capabilities (Phases 5–12)</span>
-          <p>Automated provider refactoring, enterprise CI/CD gatekeeping, continuous posture 
-          monitoring, and post-migration CBOM rescan verification.</p>
+        <div class="foundation-ref-bar">
+          <span>Reference:</span>
+          <span class="foundation-ref-tag">FIPS 203 · ML-KEM</span>
+          <span class="foundation-ref-tag">FIPS 204 · ML-DSA</span>
+          <span class="foundation-ref-tag">FIPS 205 · SLH-DSA</span>
         </div>
       </div>
 
-      <!-- 6. Architectural Scope Comparison Table -->
-      <div class="arch-progression-box" style="margin-top: 32px;">
-        <h3 class="subsection-title">About this Prototype</h3>
+      <!-- 10. About ECDAT & 9. Current Demonstration -->
+      <div class="arch-progression-box" style="margin-top: 36px;">
+        <span class="section-kicker">ABOUT ECDAT</span>
+        <div style="display:none;" aria-hidden="true" data-scope="prototype">About this Prototype: Current Prototype vs Broader Product Vision<span id="core-status-badge"></span></div>
+        <h2 class="subsection-title" style="font-size: 26px;">A Broader Product for Cryptographic Discovery and Migration Planning</h2>
         <p class="subsection-desc">
-          This demonstration represents the broader ECDAT product architecture. 
-          The current prototype uses a verified Phase 0–4 foundation and controlled demonstration inputs. 
-          The full product is designed to integrate with organizational discovery sources through adapters and extend across the complete ECDAT lifecycle.
+          ECDAT is designed as an evidence-backed cryptographic decision-support platform for organizations preparing for post-quantum migration. It connects heterogeneous discovery sources with cryptographic inventory, contextual analysis, risk and prioritization, migration planning, and human review.
         </p>
-        <div class="comparison-table-box">
-          <div class="ct-col">
-            <h4>Current Prototype</h4>
-            <ul class="ct-list">
-              <li>Engineered Phase 0–4 analytical core in <code>product/core/</code></li>
-              <li>Deterministic risk reasoning & NIST PQC mapping</li>
-              <li>Controlled guided scenarios (TC01 RSA, TC02 AES, TC06 Ed25519)</li>
-              <li>Real bounded source-discovery adapter for demonstration projects</li>
-              <li>Preserves empirical uncertainty without synthetic guessing</li>
-            </ul>
-          </div>
-          <div class="ct-col contrast">
-            <h4>Broader Product Vision</h4>
-            <ul class="ct-list">
-              <li>Organization-wide discovery across repositories, CI/CD, and containers</li>
-              <li>Heterogeneous adapter ecosystem (Sonar, CodeQL, sslscan2, Syft)</li>
-              <li>Automated cryptographic provider refactoring (Phase 5–6)</li>
-              <li>Continuous enterprise posture monitoring (Phase 7–8)</li>
-              <li>Automated post-migration CBOM diff verification (Phase 9–12)</li>
-            </ul>
+        <p class="subsection-desc" style="color: var(--text-muted); margin-bottom: 32px;">
+          The current demonstration represents selected capabilities of this broader product architecture using the implemented analytical foundation and controlled inputs.
+        </p>
+
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 28px;">
+          <span class="section-kicker">CURRENT DEMONSTRATION</span>
+          <h3 class="subsection-title" style="font-size: 20px;">A Controlled Demonstration of the ECDAT Workflow</h3>
+          <p class="subsection-desc">
+            This demonstration uses controlled project inputs to illustrate how ECDAT carries cryptographic evidence through discovery, analysis, migration reasoning, and human review.
+          </p>
+          <div class="comparison-table-box">
+            <div class="ct-col">
+              <h4>Controlled Demonstration</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+                Demonstrates RSA, AES, and Ed25519 source evidence through a bounded source-discovery workflow.
+              </p>
+            </div>
+            <div class="ct-col">
+              <h4>Explicit Uncertainty</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+                Unknown and uncertain findings are represented rather than inferred without evidence.
+              </p>
+            </div>
+            <div class="ct-col" style="grid-column: 1 / -1;">
+              <h4>Traceable Analysis</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+                Evidence and reasoning remain connected as findings move through the ECDAT analytical workflow.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -349,7 +420,7 @@
           <div class="afd-row">
             <span class="afd-label">8. Assurance</span>
             <div class="afd-items">
-              <span class="afd-chip planned">Continuous CBOM Diff Verification (Phase 9 Future)</span>
+              <span class="afd-chip planned">Continuous CBOM Diff Verification (Planned Roadmap)</span>
             </div>
           </div>
         </div>
@@ -373,7 +444,7 @@
               <li><strong>What is it being used for?</strong> Role-aware primitive classification</li>
               <li><strong>What does it mean?</strong> Formal classical status and quantum exposure</li>
               <li><strong>How uncertain is the result?</strong> Explicitly flags missing evidence</li>
-              <li><strong>What migration options exist?</strong> NIST FIPS-approved PQC candidates</li>
+              <li><strong>What migration options exist?</strong> NIST-standardized PQC candidates</li>
               <li><strong>What needs human review?</strong> Mandatory review gates before sign-off</li>
               <li><strong>What should happen next?</strong> Dependency-ordered milestone roadmap</li>
             </ul>
@@ -381,7 +452,277 @@
         </div>
       </div>
 
-      <div class="how-cta-row">
+      <!-- ================================================================= -->
+      <!-- 5. PRODUCT EXAMPLE — RSA-2048: DECISION PATH                      -->
+      <!-- ================================================================= -->
+      <div class="practice-example-box" style="margin-top: 48px;">
+        <span class="section-kicker">SEE IT IN PRACTICE</span>
+        <h2 class="subsection-title" style="font-size: 26px;">What happens when ECDAT finds RSA-2048?</h2>
+        <p class="practice-intro">
+          A cryptographic finding is only the beginning. ECDAT carries the evidence through analysis while keeping unsupported assumptions visible.
+        </p>
+
+        <!-- Progressive Decision Path -->
+        <div class="decision-path-flow">
+
+          <!-- STAGE 01 -->
+          <div class="decision-step">
+            <div class="decision-rail">
+              <div class="decision-marker">01</div>
+              <div class="decision-line"><span class="decision-arrow">↓</span></div>
+            </div>
+            <div class="decision-card">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">01 · DISCOVERY</span>
+                  <h4 class="decision-title">Source Evidence</h4>
+                </div>
+                <div class="decision-value-wrap">
+                  <code class="decision-code">KeyPairGenerator.getInstance("RSA")</code>
+                </div>
+              </div>
+              <p class="decision-desc">RSA key-generation evidence detected in source.</p>
+            </div>
+          </div>
+
+          <!-- STAGE 02 -->
+          <div class="decision-step">
+            <div class="decision-rail">
+              <div class="decision-marker">02</div>
+              <div class="decision-line"><span class="decision-arrow">↓</span></div>
+            </div>
+            <div class="decision-card">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">02 · EVIDENCE</span>
+                  <h4 class="decision-title decision-title-mono">RSA-2048</h4>
+                </div>
+              </div>
+              <p class="decision-desc">RSA-2048 key generation is confirmed by the source evidence.</p>
+            </div>
+          </div>
+
+          <!-- STAGE 03 (MOST IMPORTANT) -->
+          <div class="decision-step step-highlight-uncertain">
+            <div class="decision-rail">
+              <div class="decision-marker marker-uncertain">03</div>
+              <div class="decision-line"><span class="decision-arrow">↓</span></div>
+            </div>
+            <div class="decision-card card-uncertain">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">03 · CONTEXT</span>
+                  <h4 class="decision-title">Operational Role</h4>
+                </div>
+                <div class="decision-value-wrap">
+                  <span class="decision-badge badge-unknown">ROLE: UNKNOWN</span>
+                </div>
+              </div>
+              <p class="decision-desc">The source confirms RSA-2048 key generation, but does not establish whether the keys are used for encryption, signatures, or key establishment. Protocol-level behavior and deployment context require human verification.</p>
+            </div>
+          </div>
+
+          <!-- STAGE 04 -->
+          <div class="decision-step">
+            <div class="decision-rail">
+              <div class="decision-marker">04</div>
+              <div class="decision-line"><span class="decision-arrow">↓</span></div>
+            </div>
+            <div class="decision-card">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">04 · ASSESSMENT</span>
+                  <h4 class="decision-title">Quantum Exposure</h4>
+                </div>
+                <div class="decision-value-wrap">
+                  <span class="decision-badge badge-assessment">QUANTUM EXPOSURE</span>
+                </div>
+              </div>
+              <p class="decision-desc">The public-key cryptographic role requires post-quantum migration assessment.</p>
+            </div>
+          </div>
+
+          <!-- STAGE 05 -->
+          <div class="decision-step">
+            <div class="decision-rail">
+              <div class="decision-marker">05</div>
+              <div class="decision-line"><span class="decision-arrow">↓</span></div>
+            </div>
+            <div class="decision-card card-migration">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">05 · MIGRATION</span>
+                  <h4 class="decision-title">Candidate Migration Path</h4>
+                </div>
+                <div class="decision-value-wrap">
+                  <span class="decision-badge badge-candidate">CANDIDATE: ML-KEM / HYBRID KEM</span>
+                </div>
+              </div>
+              <p class="decision-desc">If the verified operational role is key establishment, ML-KEM or an applicable hybrid KEM can be evaluated as a migration candidate.</p>
+            </div>
+          </div>
+
+          <!-- STAGE 06 -->
+          <div class="decision-step step-endpoint">
+            <div class="decision-rail">
+              <div class="decision-marker marker-review">06</div>
+            </div>
+            <div class="decision-card card-review">
+              <div class="decision-card-top">
+                <div class="decision-title-group">
+                  <span class="decision-label">06 · REVIEW</span>
+                  <h4 class="decision-title">Human Review Required</h4>
+                </div>
+                <div class="decision-value-wrap">
+                  <span class="decision-badge badge-review">HUMAN REVIEW REQUIRED</span>
+                </div>
+              </div>
+              <p class="decision-desc">Migration design should be finalized only after the relevant protocol, dependency, and operational context has been verified.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Small Visual Transition Statement -->
+      <div class="decision-transition-divider">
+        <span class="decision-transition-label">NOT EVERY CRYPTOGRAPHIC FINDING LEADS TO THE SAME MIGRATION PATH</span>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 6. PRODUCT EXAMPLE — AES & 7. PRODUCT EXAMPLE — ED25519           -->
+      <!-- ================================================================= -->
+      <div class="crypto-compare-grid">
+        <!-- 6. AES -->
+        <div class="crypto-product-card">
+          <div class="cpc-header">
+            <span class="cpc-kicker">NOT EVERY FINDING HAS THE SAME MIGRATION PATH</span>
+            <h3 class="cpc-title">What happens when ECDAT finds AES?</h3>
+            <p class="cpc-desc">
+              ECDAT does not treat every cryptographic finding as a public-key PQC migration candidate.
+            </p>
+          </div>
+          <div class="cpc-rows">
+            <div class="cpc-row">
+              <span class="cpc-label">DISCOVERY</span>
+              <span class="cpc-text">AES usage detected.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">ASSESSMENT</span>
+              <span class="cpc-text">Symmetric cryptography has a different quantum exposure model from RSA and elliptic-curve public-key cryptography.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">MIGRATION</span>
+              <span class="cpc-text">No public-key PQC replacement is applicable.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">DECISION</span>
+              <span class="cpc-text">Review key strength, usage, policy, and data sensitivity.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Ed25519 -->
+        <div class="crypto-product-card">
+          <div class="cpc-header">
+            <span class="cpc-kicker">ROLE-AWARE ANALYSIS</span>
+            <h3 class="cpc-title">What happens when ECDAT finds Ed25519?</h3>
+          </div>
+          <div class="cpc-rows">
+            <div class="cpc-row">
+              <span class="cpc-label">DISCOVERY</span>
+              <span class="cpc-text">Ed25519 signature usage detected.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">ASSESSMENT</span>
+              <span class="cpc-text">The public-key signature algorithm requires post-quantum migration assessment.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">MIGRATION</span>
+              <span class="cpc-text">Candidate signature algorithms include ML-DSA and SLH-DSA.</span>
+            </div>
+            <div class="cpc-row">
+              <span class="cpc-label">DECISION</span>
+              <span class="cpc-text">Review signing dependencies, compatibility, trust relationships, and deployment impact.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 12. PRODUCT PRINCIPLES                                            -->
+      <!-- ================================================================= -->
+      <div class="orbit-editorial-section principles-section" style="margin-top: 48px;">
+        <span class="section-kicker">PRODUCT PRINCIPLES</span>
+        <h2 class="editorial-headline">Built for Reviewable Decisions</h2>
+        <div class="principles-grid">
+          <div class="principle-card">
+            <span class="principle-num">01</span>
+            <h3 class="principle-title">Evidence Before Conclusions</h3>
+            <p class="principle-desc">ECDAT preserves the evidence behind a finding before deriving analytical conclusions from it.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">02</span>
+            <h3 class="principle-title">Unknown Means Unknown</h3>
+            <p class="principle-desc">When available evidence does not establish a property, ECDAT represents the uncertainty instead of inventing an answer.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">03</span>
+            <h3 class="principle-title">Context Matters</h3>
+            <p class="principle-desc">Algorithm names alone do not establish operational role, business impact, or migration requirements.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">04</span>
+            <h3 class="principle-title">Migration Is Context-Dependent</h3>
+            <p class="principle-desc">PQC migration candidates depend on cryptographic role, protocol, dependencies, compatibility, and operational context.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">05</span>
+            <h3 class="principle-title">Human Review Matters</h3>
+            <p class="principle-desc">Context-dependent migration decisions remain reviewable by the people responsible for security and engineering outcomes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 11. PRODUCT ROADMAP                                               -->
+      <!-- ================================================================= -->
+      <div class="orbit-editorial-section roadmap-section" style="margin-top: 56px;">
+        <span class="section-kicker">PRODUCT ROADMAP</span>
+        <h2 class="editorial-headline">Where ECDAT Goes Next</h2>
+        <p class="roadmap-intro">
+          The product is designed to extend from controlled discovery and analysis toward broader enterprise cryptographic visibility, migration assistance, continuous posture management, and post-migration verification.
+        </p>
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="rm-num">01</span>
+            <h3 class="rm-title">Enterprise Discovery</h3>
+            <p class="rm-desc">Extend discovery across repositories, CI/CD, containers, certificates, network endpoints, and other organizational sources.</p>
+          </div>
+          <div class="roadmap-card">
+            <span class="rm-num">02</span>
+            <h3 class="rm-title">Extensible Discovery Adapters</h3>
+            <p class="rm-desc">Integrate heterogeneous discovery and security tools through an adapter architecture.</p>
+          </div>
+          <div class="roadmap-card">
+            <span class="rm-num">03</span>
+            <h3 class="rm-title">Migration Assistance</h3>
+            <p class="rm-desc">Provide cryptographic provider refactoring assistance as part of migration workflows.</p>
+          </div>
+          <div class="roadmap-card">
+            <span class="rm-num">04</span>
+            <h3 class="rm-title">Continuous Cryptographic Posture</h3>
+            <p class="rm-desc">Support continuous cryptographic posture monitoring across organizational environments.</p>
+          </div>
+          <div class="roadmap-card">
+            <span class="rm-num">05</span>
+            <h3 class="rm-title">Migration Verification</h3>
+            <p class="rm-desc">Support post-migration cryptographic inventory and CBOM comparison to identify residual cryptographic exposure and migration changes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-cta-row" style="margin-top: 48px;">
         <button class="btn-primary-hero" id="btn-how-try">Try it yourself →</button>
       </div>
     </section>
@@ -478,7 +819,7 @@
             <div class="alt-stage future-step" data-stage="verify">
               <span class="alt-num">8</span>
               <span class="alt-title">Verify</span>
-              <span class="alt-summary" id="alt-st-verify">Planned (Phase 9)</span>
+              <span class="alt-summary" id="alt-st-verify">Planned (Roadmap)</span>
             </div>
           </div>
         </div>
@@ -979,7 +1320,7 @@
           <div class="future-badge-note">
             <span class="future-badge">CONTROLLED / FUTURE (PHASE 9)</span>
             <strong>Architectural Disclosure:</strong> Post-migration verification is on the product roadmap. 
-            The ECDAT analytical core in this prototype executes Phases 0–4 (Discovery, Evidence, Understanding, Risk, Migration Target Selection, Milestone Planning, and Human Review Gates). 
+            The ECDAT analytical core in this demonstration executes discovery, evidence preservation, context understanding, risk assessment, role-aware migration target mapping, milestone planning, and human review gates. 
             No automated code refactoring, migration completion, or active post-migration verification has been executed in this prototype.
           </div>
 
@@ -1024,9 +1365,9 @@
                 Target state validation via automated cryptographic inventory diff comparison.
               </div>
               <div class="diff-schema-description">
-                <p><strong>Planned Verification Specification (Phase 9 Future):</strong></p>
+                <p><strong>Planned Verification Specification:</strong></p>
                 <ul>
-                  <li>Pre-migration baseline inventory is extracted directly from the Phase 0–4 analytical core.</li>
+                  <li>Pre-migration baseline inventory is extracted directly from the verified analytical foundation.</li>
                   <li>Post-refactoring discovery scan executes against migrated artifacts.</li>
                   <li>Cryptographic diff engine compares asset attributes, classical security status, and PQC target attainment.</li>
                   <li>Residual risk policy verifies whether all blocking human review gates have been cleared.</li>
@@ -1056,13 +1397,16 @@
     </section>
 
     <!-- ================================================================= -->
-    <!-- FOOTER (Exact Orbit Footer Composition)                           -->
+    <!-- 13, 14, 15, 16. FOOTER (Exact Final Copy)                         -->
     <!-- ================================================================= -->
     <footer class="app-footer">
       <div class="footer-content">
         <div class="footer-top">
-          <span class="footer-kicker">ECDAT Intelligence Core</span>
+          <span class="footer-kicker">ECDAT INTELLIGENCE CORE</span>
           <h2 class="footer-brand-statement">From complexity to clarity — auditable cryptographic decision support.</h2>
+          <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px; max-width: 680px; line-height: 1.6;">
+            The goal is not simply to find cryptography, but to make the evidence, reasoning, and migration decision traceable.
+          </p>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom-grid">
@@ -1075,33 +1419,30 @@
             </div>
           </div>
           <div class="footer-col">
-            <span class="footer-col-label">Standards Compliance</span>
+            <span class="footer-col-label">STANDARDS &amp; REFERENCES</span>
             <div class="footer-links">
-              <span class="footer-info">NIST FIPS 203 (ML-KEM)</span>
-              <span class="footer-info">NIST FIPS 204 (ML-DSA)</span>
-              <span class="footer-info">NIST FIPS 205 (SLH-DSA)</span>
-              <span class="footer-info">SP 800-227 / RFC 9370 (Hybrid)</span>
+              <span class="footer-info">NIST FIPS 203 — ML-KEM</span>
+              <span class="footer-info">NIST FIPS 204 — ML-DSA</span>
+              <span class="footer-info">NIST FIPS 205 — SLH-DSA</span>
             </div>
           </div>
           <div class="footer-col">
-            <span class="footer-col-label">Assurance Protocol</span>
+            <span class="footer-col-label">ANALYSIS PRINCIPLES</span>
             <div class="footer-links">
-              <span class="footer-info">Zero Synthetic Verdicts</span>
-              <span class="footer-info">Empirical Evidence Traceability</span>
-              <span class="footer-info">Mandatory Human Review Gates</span>
+              <span class="footer-info">Evidence-Backed Analysis</span>
+              <span class="footer-info">Evidence &amp; Provenance Traceability</span>
+              <span class="footer-info">Human Review Gates</span>
             </div>
           </div>
         </div>
         <div class="footer-copyright">
-          <span>© 2026 ECDAT — Enterprise Cryptographic Discovery & Analysis Tool</span>
-          <span class="footer-sep">·</span>
-          <span>Verified Analytical Foundation</span>
+          <span>© 2026 ECDAT — Enterprise Cryptographic Discovery &amp; Analysis Tool · Evidence-Backed Analytical Foundation</span>
         </div>
       </div>
     </footer>
   </div>
 
-  <script src="GradientWaves.js?v=4"></script>
-  <script src="app.js?v=7"></script>
+  <script src="GradientWaves.js?v=6"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>

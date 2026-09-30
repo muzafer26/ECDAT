@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const topTabs = document.querySelectorAll('.top-tab');
   const pageSections = document.querySelectorAll('.page-section');
 
+  const prefersReducedMotion = () => typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function switchSection(sectionId) {
     topTabs.forEach(t => {
       t.classList.toggle('active', t.dataset.section === sectionId);
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pageSections.forEach(s => {
       s.classList.toggle('active', s.id === sectionId);
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   }
 
   topTabs.forEach(tab => {
@@ -40,6 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnHeroTry) btnHeroTry.addEventListener('click', () => switchSection('section-try'));
   if (btnHeroHow) btnHeroHow.addEventListener('click', () => switchSection('section-how'));
   if (btnHowTry) btnHowTry.addEventListener('click', () => switchSection('section-try'));
+
+  const logoLink = document.querySelector('.logo-link');
+  if (logoLink) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchSection('section-overview');
+    });
+  }
 
   document.querySelectorAll('.top-tab-jump').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -186,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll journey bar into view smoothly
     const bar = document.getElementById('journey-bar');
     if (bar) {
-      bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      bar.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
     }
   }
 
@@ -545,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el('alt-st-review').textContent = asset.requires_human_review ? 'Human Review Gate' : 'Pre-approved';
     }
     if (el('alt-st-verify')) {
-      el('alt-st-verify').textContent = 'Continuous Diff (Phase 9)';
+      el('alt-st-verify').textContent = 'Continuous Diff (Planned)';
     }
   }
 
@@ -1168,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', () => {
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
     document.querySelectorAll('.editorial-headline, .editorial-headline-centered').forEach(el => {
       el.classList.add('text-reveal-target');
@@ -1182,8 +1192,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const wavesContainer = document.getElementById('hero-gradient-waves');
   if (wavesContainer && typeof GradientWaves !== 'undefined') {
     new GradientWaves(wavesContainer, {
-      horizonColor: "#6b8a3c",
-      waveColor: "#d2f83c",
+      horizonColor: "#2b5a2e",
+      waveColor: "#dff56b",
       crestColor: "#FFFFFF",
       speed: 0.4,
       amplitude: 2.5,
@@ -1194,14 +1204,14 @@ document.addEventListener('DOMContentLoaded', () => {
       tilt: 1.11,
       zoom: 1,
       height: 5.5,
-      fogDepth: 16,
+      fogDepth: 22,
       detail: "medium",
-      brightness: 0.82,
-      opacity: 0.85,
+      brightness: 1.22,
+      opacity: 0.96,
       mouseInteraction: false,
       parallaxStrength: 0.0,
       grain: true,
-      grainIntensity: 0.05
+      grainIntensity: 0.04
     });
   }
 });
